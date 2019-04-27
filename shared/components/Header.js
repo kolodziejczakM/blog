@@ -2,7 +2,6 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
-import Link from 'next/link';
 import { ListItem } from './ListItem';
 import { UnorderedList } from './UnorderedList';
 import { Anchor } from './Anchor';
@@ -31,14 +30,12 @@ const headerItems = [
 ];
 
 const HeaderLink = ({ href, label }) => (
-    <Link href={href}>
-        <ListItem>
-            <Anchor title={label}>{label}</Anchor>
-        </ListItem>
-    </Link>
+    <ListItem>
+        <Anchor href={href} label={label} />
+    </ListItem>
 );
 
-const Header = ({ theme }) => (
+const Header = () => (
     <UnorderedList>
         {headerItems.map(item => (
             <HeaderLink key={item.label} href={item.href} label={item.label} />
