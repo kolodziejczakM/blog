@@ -4,10 +4,10 @@
 
 import WithLayout from '../shared/components/WithLayout';
 
-const Index = () => {
+const Blog = () => {
     return (
-        <p>Home</p>
+        <p>Blog</p>
     );
 };
 
-export default WithLayout(Index);
+export default WithLayout(Blog);

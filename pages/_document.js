@@ -36,7 +36,6 @@ export default class MyDocument extends Document {
         return (
             <html>
                 <Head>
-                    <title>Front-end with passion</title>
                     {this.props.styleTags}
                 </Head>
                 <body>
