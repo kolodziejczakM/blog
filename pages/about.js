@@ -1,14 +1,13 @@
-import Link from 'next/link';
+/*
+ * Copyright 2019 Marcin Kołodziejczak, MIT license
+ */
+
+import WithLayout from '../shared/components/WithLayout';
 
 const About = () => {
-  return (
-    <div>
-      About
-      <Link href="/">
-        <a>here</a>
-      </Link>{' '}
-    </div>
-  );
-}
+    return (
+        <p>About</p>
+    );
+};
 
-export default About;
+export default WithLayout(About);

@@ -1,15 +1,13 @@
-import Link from 'next/link';
+/*
+ * Copyright 2019 Marcin Kołodziejczak, MIT license
+ */
 
-const Home = () => {
-  return (
-    <div>
-      Click{' '}
-      <Link href="/about">
-        <a>here</a>
-      </Link>{' '}
-      to read more
-    </div>
-  );
-}
+import WithLayout from '../shared/components/WithLayout';
 
-export default Home;
+const Index = () => {
+    return (
+        <p>Home</p>
+    );
+};
+
+export default WithLayout(Index);
