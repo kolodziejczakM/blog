@@ -2,9 +2,12 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
+import styled from 'styled-components';
+import Link from 'next/link';
 import { ListItem } from './ListItem';
 import { UnorderedList } from './UnorderedList';
 import { Anchor } from './Anchor';
+import { Logo } from './Logo';
 
 const headerItems = [
     {
@@ -35,13 +38,20 @@ const HeaderLink = ({ href, label }) => (
     </ListItem>
 );
 
+const StyledHeader = styled.header`
+    display: flex;
+    background: ${({ theme }) => theme.variants[theme.current].gray};
+`;
+
 const Header = () => (
-    <UnorderedList>
-        {headerItems.map(item => (
-            <HeaderLink key={item.label} href={item.href} label={item.label} />
-        ))}
-    </UnorderedList>
+    <StyledHeader>
+        <Logo />
+        <UnorderedList>
+            {headerItems.map(item => (
+                <HeaderLink key={item.label} href={item.href} label={item.label} />
+            ))}
+        </UnorderedList>
+    </StyledHeader>
 );
 
 export default Header;
-

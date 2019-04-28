@@ -2,18 +2,19 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
-import { Fragment } from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
+import { registerFontFace } from '../shared/utils/fonts';
 
 const GlobalStyles = createGlobalStyle`
-  html {
-    font-size: 14px;
-  }
-  body {
-    font-family: "Merriweather", serif;
-    font-size: 14px;
-  }
+    ${registerFontFace('Public Sans', 'PublicSans-Regular', 'normal')}
+    ${registerFontFace('Public Sans Bold', 'PublicSans-Bold', 'bold')}
+
+    body {
+        font-family: Public Sans;
+        font-size: 14px;
+        color: #000;
+    }
 `;
 
 export default class MyDocument extends Document {
@@ -21,10 +22,10 @@ export default class MyDocument extends Document {
         const sheet = new ServerStyleSheet();
         const page = renderPage(App => props =>
             sheet.collectStyles(
-                <Fragment>
+                <>
                     <GlobalStyles />
                     <App {...props} />
-                </Fragment>
+                </>
             )
         );
 
@@ -35,9 +36,7 @@ export default class MyDocument extends Document {
     render() {
         return (
             <html>
-                <Head>
-                    {this.props.styleTags}
-                </Head>
+                <Head>{this.props.styleTags}</Head>
                 <body>
                     <GlobalStyles />
                     <Main />

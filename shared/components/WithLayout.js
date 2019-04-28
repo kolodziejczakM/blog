@@ -2,10 +2,9 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import Header from './Header';
-import { cpus } from 'os';
 
 const useTheme = () => {
     const defaultTheme = 'daylight';
@@ -35,10 +34,10 @@ const WithLayout = Page => () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Fragment>
+            <>
                 <Header />
                 <Page />
-            </Fragment>
+            </>
         </ThemeProvider>
     );
 };
