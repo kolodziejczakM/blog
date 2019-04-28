@@ -10,7 +10,13 @@ const GlobalStyles = createGlobalStyle`
     ${registerFontFace('Public Sans', 'PublicSans-Regular', 'normal')}
     ${registerFontFace('Public Sans Bold', 'PublicSans-Bold', 'bold')}
 
+    * {
+        box-sizing: border-box;
+    }
+
     body {
+        margin: 0;
+        padding: 0;
         font-family: Public Sans;
         font-size: 14px;
         color: #000;

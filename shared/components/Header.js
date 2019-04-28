@@ -3,7 +3,6 @@
  */
 
 import styled from 'styled-components';
-import Link from 'next/link';
 import { ListItem } from './ListItem';
 import { UnorderedList } from './UnorderedList';
 import { Anchor } from './Anchor';
@@ -32,15 +31,41 @@ const headerItems = [
     }
 ];
 
+// TODO: Register these breaking points somewhere
+const StyledAnchor = styled(Anchor)`
+    font-size: 28px;
+
+    @media (max-width: 620px) {
+        font-size: 20px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 420px) {
+        font-size: 14px;
+    }
+`;
+
 const HeaderLink = ({ href, label }) => (
     <ListItem>
-        <Anchor href={href} label={label} />
+        <StyledAnchor href={href} label={label} />
     </ListItem>
 );
 
+// TODO: Register this breaking point somewhere
 const StyledHeader = styled.header`
-    display: flex;
+    display: grid;
+    grid-template-columns: 350px auto;
+    grid-gap: 60px;
     background: ${({ theme }) => theme.variants[theme.current].gray};
+
+    @media (max-width: 1040px) {
+        grid-template-columns: auto;
+        grid-gap: 20px;
+        padding-bottom: 15px;
+    }
 `;
 
 const Header = () => (
