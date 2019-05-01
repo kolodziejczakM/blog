@@ -3,10 +3,10 @@
  */
 
 import styled from 'styled-components';
-import { ListItem } from './ListItem';
-import { UnorderedList } from './UnorderedList';
-import { Anchor } from './Anchor';
-import { Logo } from './Logo';
+import { ListItem } from '~components/ListItem';
+import { UnorderedList } from '~components/UnorderedList';
+import { Anchor } from '~components/Anchor';
+import { Logo } from '~components/Logo';
 
 const headerItems = [
     {

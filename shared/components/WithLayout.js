@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import Header from './Header';
+import Header from '~components/Header';
 
 const useTheme = () => {
     const defaultTheme = 'daylight';
