@@ -6,8 +6,12 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const A = styled.a`
-    color: ${({ theme }) => theme.variants[theme.current].blue};
+    color: ${({ theme }) => theme.white};
     text-decoration: none;
+
+    :hover {
+        text-decoration: underline;
+    }
 `;
 
 export const Anchor = ({ className, href, label }) => (

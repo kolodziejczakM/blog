@@ -60,7 +60,7 @@ const StyledHeader = styled.header`
     display: grid;
     grid-template-columns: 350px auto;
     grid-gap: 60px;
-    background: ${({ theme }) => theme.variants[theme.current].gray};
+    background: ${({ theme }) => theme.gray};
 
     @media (max-width: 1040px) {
         grid-template-columns: auto;
