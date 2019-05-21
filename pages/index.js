@@ -9,16 +9,25 @@ import BlogEntities from '~data/BlogEntities.json';
 
 const StyledIndex = styled.section`
     display: grid;
-    grid-gap: 10px;
+    padding: 40px;
+    gap: 40px;
     background-color: #2196f3;
     grid-template:
+        'Header Header . .'
         'MainArticle MainArticle Article1 Article2'
         'MainArticle MainArticle Article3 Article4';
+    grid-template-rows: 1fr 4fr 4fr;
+`;
+
+const StyledHeading = styled.h1`
+    grid-area: Header;
+    color: ${({ theme }) => theme.white};
 `;
 
 const Index = () => {
     return (
         <StyledIndex>
+            <StyledHeading>Press ENTER to read newest article</StyledHeading>
             {BlogEntities.map(entity => (
                 <BlogEntity
                     key={entity.id}

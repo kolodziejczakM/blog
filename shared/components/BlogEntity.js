@@ -5,15 +5,20 @@
 import styled from 'styled-components';
 
 const StyledBlogEntity = styled.section`
+    position: relative;
     cursor: pointer;
     color: #666;
-    font-weight: bold;
-    background: ${({ theme }) => theme.white};
-    padding: 10px 40px;
-    margin-bottom: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     align-items: center;
-    grid-area: ${props => (props.id === 0 ? 'MainArticle' : 'Article' + props.id)};
+    background: ${({ theme }) => theme.white};
+    font-size: ${({ id }) => (!id ? '18px' : '14px')};
+    grid-area: ${({ id }) => (!id ? 'MainArticle' : 'Article' + id)};
+`;
+
+const StyledImg = styled.img`
+    object-fit: contain;
+    object-position: 50% 50%;
+    width: 100%;
 `;
 
 // TODO: add TypeScript, propTypes
@@ -24,8 +29,8 @@ export const BlogEntity = ({ id, title, backgroundFile, onClick }) => {
 
     return (
         <StyledBlogEntity id={id} onClick={onClickHandler}>
-            <span>{title}</span>
-            <img src={`~images/${backgroundFile}`} alt="picture" />
+            <span style={{ position: 'absolute' }}>{title}</span>
+            <StyledImg src={`/static/images/${backgroundFile}`} alt="picture" />
         </StyledBlogEntity>
     );
 };
