@@ -6,7 +6,20 @@ import styled from 'styled-components';
 import { ListItem } from '~components/ListItem';
 import { UnorderedList } from '~components/UnorderedList';
 import { Anchor } from '~components/Anchor';
-import { Logo } from '~components/Logo';
+
+// TODO: Create footer with that
+// {
+//     href: 'https://twitter.com/kolodziejczakMn',
+//     label: 'Twitter'
+// },
+// {
+//     href: 'https://www.facebook.com/kolodziejczakMn',
+//     label: 'Facebook'
+// },
+// {
+//     href: 'https://www.linkedin.com/in/marcin-ko%C5%82odziejczak-3349aa10a/',
+//     label: 'Linkedin'
+// }
 
 const headerItems = [
     {
@@ -16,18 +29,6 @@ const headerItems = [
     {
         href: '/about',
         label: 'About'
-    },
-    {
-        href: 'https://twitter.com/kolodziejczakMn',
-        label: 'Twitter'
-    },
-    {
-        href: 'https://www.facebook.com/kolodziejczakMn',
-        label: 'Facebook'
-    },
-    {
-        href: 'https://www.linkedin.com/in/marcin-ko%C5%82odziejczak-3349aa10a/',
-        label: 'Linkedin'
     }
 ];
 
@@ -70,7 +71,6 @@ const StyledHeader = styled.header`
 
 const Header = () => (
     <StyledHeader>
-        <Logo />
         <UnorderedList>
             {headerItems.map(item => (
                 <HeaderLink key={item.label} href={item.href} label={item.label} />

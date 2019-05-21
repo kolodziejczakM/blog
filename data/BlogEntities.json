@@ -2,31 +2,25 @@
     {
         "id": 0,
         "title": "Initial commit - why and what",
-        "description": "In this first blog post I try to tell you why I'm doing this, and about what I will be talking about",
-        "tags": [{ "id": 0, "name": "JavaScript", "background": "yellow" }]
+        "backgroundFile": "road-hills.jpg",
+        "onMedium": false
     },
     {
         "id": 1,
         "title": "JavaScript - the missing parts",
-        "description": "I've seen it before and I would love to use it in my JavaScript app...",
-        "tags": [{ "id": 0, "name": "JavaScript", "background": "yellow" }]
+        "backgroundFile": "universe-man.jpg",
+        "onMedium": false
     },
     {
         "id": 2,
         "title": "Privacy in modern JavaScript apps",
-        "description": "WeakMaps use-case? Private members in constructor? Or maybe good old module pattern?",
-        "tags": [
-            { "id": 0, "name": "Medium", "background": "#0ae370" },
-            { "id": 1, "name": "JavaScript", "background": "yellow" }
-        ]
+        "backgroundFile": "privacy-fence.jpg",
+        "onMedium": true
     },
     {
         "id": 3,
         "title": "We don't need null at all? I'm not undefined",
-        "description": "thoughts about null and undefined in JavaScript",
-        "tags": [
-            { "id": 0, "name": "Medium", "background": "#0ae370" },
-            { "id": 1, "name": "JavaScript", "background": "yellow" }
-        ]
+        "backgroundFile": "blank-sticky.jpg",
+        "onMedium": true
     }
 ]

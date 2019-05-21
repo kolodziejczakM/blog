@@ -3,8 +3,6 @@
  */
 
 import styled from 'styled-components';
-import { ListItem } from '~components/ListItem';
-import { UnorderedList } from '~components/UnorderedList';
 
 const StyledBlogEntity = styled.section`
     display: grid;
@@ -20,33 +18,18 @@ const StyledBlogEntity = styled.section`
     align-items: center;
 `;
 
-const StyledBlogTag = styled(ListItem)`
-    padding: 10px;
-    border-radius: 10px 2px;
-`;
-
-const BlogTag = ({ text, background }) => (
-    <StyledBlogTag style={{ background }}>{text}</StyledBlogTag>
-);
-
 // TODO: add TypeScript, propTypes
-export const BlogEntity = ({ id, title, expanded, description, tags, onClick }) => {
+export const BlogEntity = ({ id, title, backgroundFile, onClick }) => {
     const onClickHandler = () => {
         onClick(id);
     };
-
-    const renderTags = tags =>
-        tags.map(tag => (
-            <BlogTag key={tag.id} text={tag.name} background={tag.background} />
-        ));
 
     return (
         <section onClick={onClickHandler}>
             <StyledBlogEntity>
                 <span>{title}</span>
-                <UnorderedList>{renderTags(tags)}</UnorderedList>
+                <img src={`~images/${backgroundFile}`} alt="picture" />
             </StyledBlogEntity>
-            {expanded && <section>{description}</section>}
         </section>
     );
 };
