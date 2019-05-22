@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html, body {
+        height: 100vh;
+    }
+
     body {
         margin: 0;
         padding: 0 40px;

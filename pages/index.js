@@ -15,7 +15,6 @@ const StyledGrid = styled.section`
         'MainArticle MainArticle Article1 Article2'
         'MainArticle MainArticle Article3 Article4';
     grid-template-rows: repeat(2, 1fr);
-    padding-top: 50px;
 `;
 
 const StyledHeading = styled.h1`
@@ -23,7 +22,6 @@ const StyledHeading = styled.h1`
     font-size: 32px;
     margin: 0;
     position: absolute;
-    top: 60px;
 `;
 
 const Index = () => {

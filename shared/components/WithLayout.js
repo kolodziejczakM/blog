@@ -2,8 +2,24 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
-import { ThemeProvider } from 'styled-components';
-import Header from '~components/Header';
+import styled, { ThemeProvider } from 'styled-components';
+import { Header } from '~components/Header';
+import { Footer } from '~components/Footer';
+
+const StyledGrid = styled.section`
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    height: 100vh;
+`;
+
+const StyledHeader = styled(Header)`
+    padding: 10px 0;
+`;
+
+const StyledFooter = styled(Footer)`
+    align-self: end;
+    padding: 20px 0;
+`;
 
 const WithLayout = Page => () => {
     const colors = {
@@ -17,10 +33,11 @@ const WithLayout = Page => () => {
 
     return (
         <ThemeProvider theme={colors}>
-            <>
-                <Header />
+            <StyledGrid>
+                <StyledHeader />
                 <Page />
-            </>
+                <StyledFooter />
+            </StyledGrid>
         </ThemeProvider>
     );
 };

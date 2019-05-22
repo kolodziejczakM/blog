@@ -9,12 +9,16 @@ import { Anchor } from '~components/Anchor';
 
 const items = [
     {
-        href: '/',
-        label: 'Blog'
+        href: 'https://twitter.com/kolodziejczakMn',
+        label: 'Twitter'
     },
     {
-        href: '/about',
-        label: 'About'
+        href: 'https://www.facebook.com/kolodziejczakMn',
+        label: 'Facebook'
+    },
+    {
+        href: 'https://www.linkedin.com/in/marcin-ko%C5%82odziejczak-3349aa10a/',
+        label: 'Linkedin'
     }
 ];
 
@@ -22,18 +26,18 @@ const StyledAnchor = styled(Anchor)`
     font-size: 16px;
 `;
 
-const HeaderLink = ({ href, label }) => (
+const FooterLink = ({ href, label }) => (
     <ListItem>
         <StyledAnchor href={href} label={label} />
     </ListItem>
 );
 
-export const Header = ({ className }) => (
-    <header className={className}>
+export const Footer = ({ className }) => (
+    <footer className={className}>
         <UnorderedList>
             {items.map(item => (
-                <HeaderLink key={item.label} href={item.href} label={item.label} />
+                <FooterLink key={item.label} href={item.href} label={item.label} />
             ))}
         </UnorderedList>
-    </header>
+    </footer>
 );
