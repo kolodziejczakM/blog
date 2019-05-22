@@ -3,24 +3,35 @@
         "id": 0,
         "title": "Initial commit - why and what",
         "backgroundFile": "road-hills.jpg",
-        "onMedium": false
+        "onMedium": false,
+        "href": "/initial-commit-why-and-what"
     },
     {
         "id": 1,
         "title": "JavaScript - the missing parts",
         "backgroundFile": "universe-man.jpg",
-        "onMedium": false
+        "onMedium": false,
+        "href": "/javascript-the-missing-parts"
     },
     {
         "id": 2,
         "title": "Privacy in modern JavaScript apps",
         "backgroundFile": "privacy-fence.jpg",
-        "onMedium": true
+        "onMedium": true,
+        "href": "/javascript-the-missing-parts"
     },
     {
         "id": 3,
         "title": "We don't need null at all? I'm not undefined",
         "backgroundFile": "blank-sticky.jpg",
-        "onMedium": true
+        "onMedium": true,
+        "href": "/we-dont-need-null-at-all-im-not-undefined"
+    },
+    {
+        "id": 4,
+        "title": "What I love in Golang",
+        "backgroundFile": "blank-sticky.jpg",
+        "onMedium": true,
+        "href": "/what-i-love-in-golang"
     }
 ]

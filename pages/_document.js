@@ -16,9 +16,10 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         margin: 0;
-        padding: 0;
+        padding: 0 40px;
         font-family: Public Sans;
         font-size: 14px;
+        background: #333;
         color: #000;
     }
 `;

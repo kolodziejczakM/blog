@@ -12,6 +12,10 @@ const A = styled.a`
     :hover {
         text-decoration: underline;
     }
+
+    :focus {
+        outline: 4px solid ${({ theme }) => theme.brightGreen};
+    }
 `;
 
 export const Anchor = ({ className, href, label }) => (
