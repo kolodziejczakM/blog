@@ -14,7 +14,6 @@ const StyledBlogEntity = styled.a`
     height: 80%;
     align-self: end;
     grid-area: ${({ id }) => (!id ? 'MainArticle' : 'Article' + id)};
-    transition: background 0.2s ease-in-out;
 
     :hover {
         section {
