@@ -16,6 +16,12 @@ export default class MyApp extends App {
         return { pageProps };
     }
 
+    componentDidMount() {
+        import('particles.js').then(() => {
+            particlesJS.load('particles-js', '/static/particlesjs-config.json');
+        });
+    }
+
     render() {
         const { Component, pageProps } = this.props;
 

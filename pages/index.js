@@ -28,7 +28,7 @@ const Index = () => {
     return (
         <section>
             <StyledGrid>
-                <StyledHeading>Press ENTER to read newest article</StyledHeading>
+                <StyledHeading>Press ENTER to read selected article</StyledHeading>
                 {BlogEntities.map(entity => (
                     <BlogEntity
                         key={entity.id}

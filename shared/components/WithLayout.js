@@ -10,6 +10,14 @@ const StyledGrid = styled.section`
     display: grid;
     grid-template-rows: 1fr 5fr 1fr;
     height: 100vh;
+
+    #particles-js {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const StyledHeader = styled(Header)`
@@ -34,6 +42,7 @@ const WithLayout = Page => () => {
     return (
         <ThemeProvider theme={colors}>
             <StyledGrid>
+                <div id="particles-js" />
                 <StyledHeader />
                 <Page />
                 <StyledFooter />

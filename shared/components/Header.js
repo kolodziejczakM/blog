@@ -10,7 +10,7 @@ import { Anchor } from '~components/Anchor';
 const items = [
     {
         href: '/',
-        label: 'Blog'
+        label: '> Blog'
     },
     {
         href: '/about',
