@@ -19,6 +19,10 @@ const StyledGrid = styled.section`
         height: 100%;
         filter: blur(8px);
     }
+
+    canvas {
+        display: block;
+    }
 `;
 
 const StyledHeader = styled(Header)`

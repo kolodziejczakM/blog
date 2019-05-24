@@ -6,6 +6,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 import { registerFontFace } from '~utils/fonts';
 
+// TODO: import colors from withLayout
 const GlobalStyles = createGlobalStyle`
     ${registerFontFace('Public Sans', 'PublicSans-Regular', 'normal')}
     ${registerFontFace('Public Sans Bold', 'PublicSans-Bold', 'bold')}

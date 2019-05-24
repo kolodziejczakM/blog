@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 
 // TODO: try to reuse Anchor instead of <a>
+// TODO: use / register colors => withLayout
 const StyledBlogEntity = styled.a`
     position: relative;
     cursor: pointer;
