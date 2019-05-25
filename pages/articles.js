@@ -41,16 +41,18 @@ const StyledSection = styled.section`
 `;
 
 // TODO: move all staticTexts to decorator
-const Articles = withRouter(({ router }) => {
-    // console.log('router: ', router);
+const Articles = withRouter(({ router: { query: { content, metadata } } }) => {
     return (
         <StyledGrid>
             <StyledHeader>
-                <StyledHeading>TITLE</StyledHeading>
-                <StyledImg src="/static/images/universe-man.jpg" alt="article's banner" />
+                <StyledHeading>{metadata.title}</StyledHeading>
+                <StyledImg
+                    src={`/static/images/${metadata.backgroundFile}`}
+                    alt="article's banner"
+                />
             </StyledHeader>
             <StyledSection>
-                <ReactMarkdown source={router.query.content} />
+                <ReactMarkdown source={content} />
             </StyledSection>
         </StyledGrid>
     );

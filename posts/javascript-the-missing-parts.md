@@ -2,7 +2,7 @@
 title: JavaScript - the missing parts
 date: 25-05-2019
 writtenBy: Marcin Kołodziejczak
-backgroundFile: universe-man.jpg,
+backgroundFile: universe-man.jpg
 onMedium: false
 href: javascript-the-missing-parts
 ---
