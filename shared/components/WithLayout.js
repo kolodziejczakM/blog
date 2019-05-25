@@ -2,6 +2,7 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
+import { useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Header } from '~components/Header';
 import { Footer } from '~components/Footer';
@@ -35,6 +36,12 @@ const StyledFooter = styled(Footer)`
 `;
 
 const WithLayout = Page => () => {
+    useEffect(() => {
+        import('particles.js').then(() => {
+            particlesJS.load('particles-js', '/static/particlesjs-config.json');
+        });
+    }, []);
+
     const colors = {
         gray: '#333',
         white: '#FFF',
