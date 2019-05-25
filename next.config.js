@@ -2,42 +2,16 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
-const fs = require('fs');
 const path = require('path');
 const parseMD = require('parse-md').default;
-
-const getArticles = () => {
-    const files = fs.readdirSync(path.join(__dirname, 'posts'));
-
-    return files.reduce((acc, file) => {
-        const rawFileContent = fs.readFileSync(
-            path.join(__dirname, `posts/${file}`),
-            'utf-8'
-        );
-
-        const { content, metadata } = parseMD(rawFileContent);
-
-        return {
-            ...acc,
-            [`/articles/${file.split('.')[0]}`]: {
-                page: '/articles',
-                query: {
-                    content,
-                    metadata
-                }
-            }
-        };
-    }, {});
-};
-
-const articles = getArticles();
+const { getArticles } = require('./utils');
 
 module.exports = {
     exportPathMap: function() {
         return {
             '/': { page: '/' },
             '/about': { page: '/about' },
-            ...articles
+            ...getArticles()
         };
     },
     webpack(config) {

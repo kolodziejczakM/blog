@@ -5,17 +5,15 @@
     "main": "",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "src-build": "tsc -p tsconfig-scripts.production.json",
-        "src-dev": "tsc -w -p tsconfig-scripts.json",
         "next-dev": "next",
         "next-build": "next build",
         "next-start": "next start",
-        "next-export": "next export"
+        "next-export": "next export",
+        "register-articles": "node -e 'require(\"./utils\").registerArticles()'"
     },
     "author": "Marcin Kołodziejczak",
     "license": "MIT",
     "dependencies": {
-        "@types/node": "^11.13.8",
         "babel-plugin-styled-components": "^1.10.0",
         "next": "^8.1.0",
         "parse-md": "^1.0.3",
@@ -23,12 +21,7 @@
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-markdown": "^4.0.8",
-        "styled-components": "^4.2.0",
-        "typescript": "^3.4.5"
+        "styled-components": "^4.2.0"
     },
-    "devDependencies": {
-        "tslint": "^5.16.0",
-        "tslint-config-airbnb": "^5.11.1",
-        "tslint-config-prettier": "^1.18.0"
-    }
+    "devDependencies": {}
 }

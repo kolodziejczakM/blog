@@ -5,20 +5,7 @@
 import styled from 'styled-components';
 import WithLayout from '~components/WithLayout';
 import { BlogEntity } from '~components/BlogEntity';
-import BlogEntities from '~data/BlogEntities.json';
-
-// TODO: swap with generated list
-const articles = {
-    lala: {
-        query: {
-            metadata: {
-                title: 'xd',
-                backgroundFile: 'xx.jpg',
-                href: '/lala'
-            }
-        }
-    }
-};
+import articles from '~data/articles.json';
 
 const StyledGrid = styled.section`
     z-index: 1;
@@ -42,10 +29,10 @@ const Index = () => (
     <section>
         <StyledGrid>
             <StyledHeading>Articles</StyledHeading>
-            {Object.values(articles).map(({ query: { metadata } }) => (
+            {Object.values(articles).map(({ query: { metadata } }, id) => (
                 <BlogEntity
                     key={metadata.title}
-                    id={metadata.title}
+                    id={id}
                     title={metadata.title}
                     backgroundFile={metadata.backgroundFile}
                     href={`/articles/${metadata.href}`}
