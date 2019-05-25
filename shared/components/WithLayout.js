@@ -7,9 +7,9 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Header } from '~components/Header';
 import { Footer } from '~components/Footer';
 
-const StyledGrid = styled.section`
+const StyledGrid = styled.main`
     display: grid;
-    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-rows: 80px 5fr 80px;
     height: 100vh;
 
     #particles-js {

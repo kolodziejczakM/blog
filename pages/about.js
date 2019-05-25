@@ -8,16 +8,19 @@ import { Anchor } from '~components/Anchor';
 
 const StyledGrid = styled.section`
     z-index: 1;
+    width: 80%;
+    margin: 0 auto;
     display: grid;
     gap: 40px 80px;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 3fr;
+    grid-template-rows: 1fr 1fr;
 `;
 
 const StyledHeader = styled.header`
     display: grid;
-    place-items: center;
-    gap: 10px;
+    grid-template-rows: auto 1fr;
+    gap: 15px;
+    justify-items: center;
 `;
 
 const StyledHeading = styled.h1`

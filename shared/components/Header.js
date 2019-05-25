@@ -13,7 +13,7 @@ const activeElementPrefix = '>';
 const items = [
     {
         href: '/',
-        label: 'Blog'
+        label: 'Home'
     },
     {
         href: '/about',

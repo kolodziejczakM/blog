@@ -5,7 +5,7 @@
 import styled from 'styled-components';
 import WithLayout from '~components/WithLayout';
 import { BlogEntity } from '~components/BlogEntity';
-import BlogEntities from '~data/BlogEntities.json';
+import BlogEntities from '~posts/BlogEntities.json';
 
 const StyledGrid = styled.section`
     z-index: 1;
@@ -20,28 +20,26 @@ const StyledGrid = styled.section`
 
 const StyledHeading = styled.h1`
     color: ${({ theme }) => theme.white};
-    font-size: 32px;
+    font-size: 50px;
     margin: 0;
     position: absolute;
 `;
 
-const Index = () => {
-    return (
-        <section>
-            <StyledGrid>
-                <StyledHeading>Press ENTER to read selected article</StyledHeading>
-                {BlogEntities.map(entity => (
-                    <BlogEntity
-                        key={entity.id}
-                        id={entity.id}
-                        title={entity.title}
-                        backgroundFile={entity.backgroundFile}
-                        href={entity.href}
-                    />
-                ))}
-            </StyledGrid>
-        </section>
-    );
-};
+const Index = () => (
+    <section>
+        <StyledGrid>
+            <StyledHeading>Articles</StyledHeading>
+            {BlogEntities.map(entity => (
+                <BlogEntity
+                    key={entity.id}
+                    id={entity.id}
+                    title={entity.title}
+                    backgroundFile={entity.backgroundFile}
+                    href={`/articles/${entity.href}`}
+                />
+            ))}
+        </StyledGrid>
+    </section>
+);
 
 export default WithLayout(Index);
