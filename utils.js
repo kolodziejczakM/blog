@@ -6,7 +6,7 @@ const { readFileSync, readdirSync } = require('fs');
 const path = require('path');
 const parseMD = require('parse-md').default;
 
-exports.getArticles = () => {
+const getArticles = () => {
     const files = readdirSync(path.join(__dirname, 'posts'));
 
     return files.reduce((acc, file) => {
@@ -34,7 +34,7 @@ exports.getArticles = () => {
 exports.registerArticles = () => {
     fs.writeFile(
         path.join(__dirname, 'data/articles.json'),
-        JSON.stringify(this.getArticles()),
+        JSON.stringify(getArticles()),
         err => {
             if (err) console.log(err);
             console.log('Successfully Written to File.');

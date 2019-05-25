@@ -4,14 +4,14 @@
 
 const path = require('path');
 const parseMD = require('parse-md').default;
-const { getArticles } = require('./utils');
+const articles = require('./data/articles.json');
 
 module.exports = {
     exportPathMap: function() {
         return {
             '/': { page: '/' },
             '/about': { page: '/about' },
-            ...getArticles()
+            ...articles
         };
     },
     webpack(config) {
