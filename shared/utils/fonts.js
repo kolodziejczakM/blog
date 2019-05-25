@@ -2,7 +2,6 @@
  * Copyright 2019 Marcin Kołodziejczak, MIT license
  */
 
-// TODO: Add TS types
 export const registerFontFace = (fontName, fontFileName, fontWeight) => {
     const basePath = '/static/fonts/PublicSans';
 

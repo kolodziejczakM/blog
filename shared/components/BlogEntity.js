@@ -48,7 +48,6 @@ const StyledLabel = styled.section`
     overflow: hidden;
 `;
 
-// TODO: add TypeScript, propTypes
 export const BlogEntity = ({ id, title, backgroundFile, href }) => {
     const [isFocused] = useState(!id);
     const ref = useRef();

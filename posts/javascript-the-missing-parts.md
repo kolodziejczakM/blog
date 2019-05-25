@@ -1,6 +1,6 @@
 ---
 title: JavaScript - the missing parts
-date: 25-05-2019
+date: 28-05-2019
 writtenBy: Marcin Kołodziejczak
 backgroundFile: universe-man.jpg
 onMedium: false

@@ -9,8 +9,13 @@
         "next-build": "next build",
         "next-start": "next start",
         "next-export": "next export",
-        "register-articles": "node -e 'require(\"./utils\").registerArticles()'"
+        "register-articles": "node -e 'require(\"./utils\").registerArticles()'",
+        "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
+    "pre-commit": [
+        "precommit-msg",
+        "register-articles"
+    ],
     "author": "Marcin Kołodziejczak",
     "license": "MIT",
     "dependencies": {
@@ -23,5 +28,7 @@
         "react-markdown": "^4.0.8",
         "styled-components": "^4.2.0"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "pre-commit": "^1.2.2"
+    }
 }
