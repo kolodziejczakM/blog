@@ -17,7 +17,7 @@ const StyledGrid = styled.section`
         left: 0;
         width: 100%;
         height: 100%;
-        filter: blur(8px);
+        filter: blur(4px);
     }
 
     canvas {

@@ -6,11 +6,14 @@ import styled from 'styled-components';
 import { ListItem } from '~components/ListItem';
 import { UnorderedList } from '~components/UnorderedList';
 import { Anchor } from '~components/Anchor';
+import { withRouter } from 'next/router';
+
+const activeElementPrefix = '>';
 
 const items = [
     {
         href: '/',
-        label: '> Blog'
+        label: 'Blog'
     },
     {
         href: '/about',
@@ -18,22 +21,34 @@ const items = [
     }
 ];
 
+const StyledHeader = styled.header`
+    z-index: 1;
+`;
+
 const StyledAnchor = styled(Anchor)`
     font-size: 16px;
 `;
 
-const HeaderLink = ({ href, label }) => (
+const HeaderLink = ({ href, label, isActive }) => (
     <ListItem>
-        <StyledAnchor href={href} label={label} />
+        <StyledAnchor
+            href={href}
+            label={isActive ? `${activeElementPrefix} ${label}` : label}
+        />
     </ListItem>
 );
 
-export const Header = ({ className }) => (
-    <header className={className}>
+export const Header = withRouter(({ className, router }) => (
+    <StyledHeader className={className}>
         <UnorderedList>
             {items.map(item => (
-                <HeaderLink key={item.label} href={item.href} label={item.label} />
+                <HeaderLink
+                    key={item.label}
+                    href={item.href}
+                    label={item.label}
+                    isActive={router.pathname === item.href}
+                />
             ))}
         </UnorderedList>
-    </header>
-);
+    </StyledHeader>
+));

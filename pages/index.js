@@ -8,6 +8,7 @@ import { BlogEntity } from '~components/BlogEntity';
 import BlogEntities from '~data/BlogEntities.json';
 
 const StyledGrid = styled.section`
+    z-index: 1;
     display: grid;
     position: relative;
     gap: 0 80px;

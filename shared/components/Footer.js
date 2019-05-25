@@ -22,6 +22,10 @@ const items = [
     }
 ];
 
+const StyledFooter = styled.footer`
+    z-index: 1;
+`;
+
 const StyledAnchor = styled(Anchor)`
     font-size: 16px;
 `;
@@ -33,11 +37,11 @@ const FooterLink = ({ href, label }) => (
 );
 
 export const Footer = ({ className }) => (
-    <footer className={className}>
+    <StyledFooter className={className}>
         <UnorderedList>
             {items.map(item => (
                 <FooterLink key={item.label} href={item.href} label={item.label} />
             ))}
         </UnorderedList>
-    </footer>
+    </StyledFooter>
 );
