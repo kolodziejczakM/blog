@@ -37,6 +37,7 @@ const StyledFooter = styled(Footer)`
 
 const WithLayout = Page => () => {
     useEffect(() => {
+        // has to be here because of its dependency to window object
         import('particles.js').then(() => {
             particlesJS.load('particles-js', '/static/particlesjs-config.json');
         });

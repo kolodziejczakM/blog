@@ -20,11 +20,6 @@ export default class MyApp extends App {
     }
 
     componentDidMount() {
-        import('particles.js').then(() => {
-            // has to be here because of its dependency to window object
-            particlesJS.load('particles-js', '/static/particlesjs-config.json');
-        });
-
         hljs.registerLanguage('javascript', javascript);
         document.querySelectorAll('pre code').forEach(block => {
             hljs.highlightBlock(block);
