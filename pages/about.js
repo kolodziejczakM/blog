@@ -50,11 +50,12 @@ const StyledAnchor = styled(Anchor)`
 `;
 
 // TODO: move all staticTexts to decorator
+// TODO: path to images should be a const declared somewhere and imported here
 const About = () => {
     return (
         <StyledGrid>
             <StyledHeader>
-                <StyledImg src="/static/images/webp/me.png" alt="author" />
+                <StyledImg src="/static/images/webp/me.webp" alt="author" />
                 <StyledHeading>Marcin Kołodziejczak</StyledHeading>
             </StyledHeader>
             <StyledSection>

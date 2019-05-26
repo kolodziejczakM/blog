@@ -6,11 +6,10 @@ import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 
 // TODO: try to reuse Anchor instead of <a>
-// TODO: use / register colors => withLayout
 const StyledBlogEntity = styled.a`
     position: relative;
     cursor: pointer;
-    color: #666;
+    color: ${({ theme }) => theme.lightGray};
     background: ${({ theme }) => theme.white};
 
     :hover {
@@ -28,7 +27,11 @@ const StyledImg = styled.img`
     object-fit: cover;
     object-position: center center;
     width: 100%;
-    height: 100%;
+    height: 200px;
+
+    @media (max-width: 500px) {
+        height: 150px;
+    }
 `;
 
 const StyledLabel = styled.section`
@@ -46,6 +49,10 @@ const StyledLabel = styled.section`
 
     @media (max-width: 1200px) {
         font-size: 16px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 14px;
     }
 `;
 

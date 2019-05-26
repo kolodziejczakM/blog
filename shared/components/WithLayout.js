@@ -9,7 +9,7 @@ import { Footer } from '~components/Footer';
 
 const StyledGrid = styled.main`
     display: grid;
-    grid-template-rows: 40px 5fr 80px;
+    grid-template-rows: auto 5fr auto;
     height: 100vh;
 
     #particles-js {
@@ -44,6 +44,7 @@ const WithLayout = Page => () => {
     }, []);
 
     const colors = {
+        lighGray: '#666',
         gray: '#333',
         white: '#FFF',
         orange: '#CC927A',

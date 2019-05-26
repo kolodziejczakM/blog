@@ -12,13 +12,13 @@ const StyledGrid = styled.section`
     display: grid;
     position: relative;
     gap: 40px 80px;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-template-rows: 1fr;
     grid-auto-rows: 1fr;
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1000px) {
         gap: 20px 40px;
-        grid-template-columns: repeat(auto-fill, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 `;
 
