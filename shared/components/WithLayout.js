@@ -9,7 +9,7 @@ import { Footer } from '~components/Footer';
 
 const StyledGrid = styled.main`
     display: grid;
-    grid-template-rows: 80px 5fr 80px;
+    grid-template-rows: 40px 5fr 80px;
     height: 100vh;
 
     #particles-js {
@@ -18,7 +18,7 @@ const StyledGrid = styled.main`
         left: 0;
         width: 100%;
         height: 100%;
-        filter: blur(4px);
+        filter: blur(3px);
     }
 
     canvas {

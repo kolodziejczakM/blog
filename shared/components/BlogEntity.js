@@ -12,9 +12,6 @@ const StyledBlogEntity = styled.a`
     cursor: pointer;
     color: #666;
     background: ${({ theme }) => theme.white};
-    height: 80%;
-    align-self: end;
-    grid-area: ${({ id }) => (!id ? 'MainArticle' : 'Article' + id)};
 
     :hover {
         section {
@@ -28,7 +25,7 @@ const StyledBlogEntity = styled.a`
 `;
 
 const StyledImg = styled.img`
-    object-fit: fill;
+    object-fit: cover;
     object-position: center center;
     width: 100%;
     height: 100%;
@@ -39,13 +36,17 @@ const StyledLabel = styled.section`
     bottom: 0;
     left: 0;
     width: 100%;
-    font-size: ${({ id }) => (!id ? '24px' : '16px')};
-    padding: ${({ id }) => (!id ? '14px 16px' : '10px 12px')};
+    font-size: 20px;
+    padding: 10px;
     color: ${({ theme }) => theme.white};
     background: ${({ theme }) => theme.lightGreen};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
+    @media (max-width: 1200px) {
+        font-size: 16px;
+    }
 `;
 
 export const BlogEntity = ({ id, title, backgroundFile, href }) => {

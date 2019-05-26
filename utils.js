@@ -3,6 +3,7 @@
  */
 
 const { readFileSync, readdirSync } = require('fs');
+const { readdir } = require('fs').promises;
 const path = require('path');
 const parseMD = require('parse-md').default;
 const webp = require('webp-converter');
@@ -43,8 +44,8 @@ exports.registerArticles = () => {
     );
 };
 
-exports.convertBannersToWebP = () => {
-    const banners = readdirSync(path.join(__dirname, 'static/images'));
+exports.convertBannersToWebP = async () => {
+    const banners = await readdir(path.join(__dirname, 'static/images'));
 
     banners.forEach(banner => {
         if (!banner.includes('.')) return;
