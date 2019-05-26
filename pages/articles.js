@@ -71,7 +71,7 @@ const Articles = withRouter(({ router: { query: { content, metadata } } }) => {
             <StyledHeader>
                 <StyledHeading>{metadata.title}</StyledHeading>
                 <StyledImg
-                    src={`/static/images/${metadata.backgroundFile}`}
+                    src={`/static/images/webp/${metadata.backgroundFile}`}
                     alt="article's banner"
                 />
             </StyledHeader>

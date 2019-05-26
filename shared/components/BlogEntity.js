@@ -60,7 +60,7 @@ export const BlogEntity = ({ id, title, backgroundFile, href }) => {
 
     return (
         <StyledBlogEntity id={id} href={href} ref={ref}>
-            <StyledImg src={`/static/images/${backgroundFile}`} alt={title} />
+            <StyledImg src={`/static/images/webp/${backgroundFile}`} alt={title} />
             <StyledLabel id={id}>{title}</StyledLabel>
         </StyledBlogEntity>
     );

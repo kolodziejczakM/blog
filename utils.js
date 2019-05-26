@@ -5,6 +5,7 @@
 const { readFileSync, readdirSync } = require('fs');
 const path = require('path');
 const parseMD = require('parse-md').default;
+const webp = require('webp-converter');
 
 const getArticles = () => {
     const files = readdirSync(path.join(__dirname, 'posts'));
@@ -37,7 +38,27 @@ exports.registerArticles = () => {
         JSON.stringify(getArticles()),
         err => {
             if (err) console.log(err);
-            console.log('Successfully Written to File.');
+            console.log('Successfully generated: data/articles.json.');
         }
     );
+};
+
+exports.convertBannersToWebP = () => {
+    const banners = readdirSync(path.join(__dirname, 'static/images'));
+
+    banners.forEach(banner => {
+        if (!banner.includes('.')) return;
+
+        const [bannerName] = banner.split('.');
+        const basePath = 'static/images';
+
+        webp.cwebp(
+            `${basePath}/${banner}`,
+            `${basePath}/webp/${bannerName}.webp`,
+            '-q 80',
+            (status, error) => {
+                console.log(status, error);
+            }
+        );
+    });
 };

@@ -54,7 +54,7 @@ const About = () => {
     return (
         <StyledGrid>
             <StyledHeader>
-                <StyledImg src="/static/images/me.png" alt="author" />
+                <StyledImg src="/static/images/webp/me.png" alt="author" />
                 <StyledHeading>Marcin Kołodziejczak</StyledHeading>
             </StyledHeader>
             <StyledSection>

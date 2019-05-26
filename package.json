@@ -10,10 +10,12 @@
         "next-start": "next start",
         "next-export": "next export",
         "register-articles": "node -e 'require(\"./utils\").registerArticles()'",
+        "convert-banners": "node -e 'require(\"./utils\").convertBannersToWebP()'",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
     "pre-commit": [
         "precommit-msg",
+        "convert-banners",
         "register-articles"
     ],
     "author": "Marcin Kołodziejczak",
@@ -28,7 +30,8 @@
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-markdown": "^4.0.8",
-        "styled-components": "^4.2.0"
+        "styled-components": "^4.2.0",
+        "webp-converter": "^2.2.2"
     },
     "devDependencies": {
         "pre-commit": "^1.2.2"
