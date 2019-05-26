@@ -7,6 +7,8 @@ const { readdir } = require('fs').promises;
 const path = require('path');
 const parseMD = require('parse-md').default;
 const webp = require('webp-converter');
+const sizeOf = require('image-size');
+const sharp = require('sharp');
 
 const getArticles = () => {
     const files = readdirSync(path.join(__dirname, 'posts'));
@@ -52,14 +54,30 @@ exports.convertBannersToWebP = async () => {
 
         const [bannerName] = banner.split('.');
         const basePath = 'static/images';
+        sizeOf(`${basePath}/${banner}`, async (_, dimensions) => {
+            console.log('Resizing start...');
+            const factor = dimensions.width / dimensions.height;
 
-        webp.cwebp(
-            `${basePath}/${banner}`,
-            `${basePath}/webp/${bannerName}.webp`,
-            '-q 80',
-            (status, error) => {
-                console.log(status, error);
-            }
-        );
+            await sharp(`${basePath}/${banner}`)
+                .resize({
+                    width: 600,
+                    height: 600 * factor
+                })
+                .toFile(`${basePath}/compressed/${banner}`);
+
+            console.log('Resizing done.');
+            console.log('Conversion start...');
+
+            webp.cwebp(
+                `${basePath}/compressed/${banner}`,
+                `${basePath}/webp/${bannerName}.webp`,
+                '-q 70',
+                (status, error) => {
+                    console.log(status, error);
+                }
+            );
+
+            console.log('Conversion done.');
+        });
     });
 };
