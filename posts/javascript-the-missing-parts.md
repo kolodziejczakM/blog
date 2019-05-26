@@ -23,9 +23,11 @@ Changes are automatically rendered as you type.
 </blockquote>
 
 ## How about some code?
-```js
+```javascript
 var React = require('react');
 var Markdown = require('react-markdown');
+
+console.log('test');
 
 React.render(
   <Markdown source="# Your markdown here" />,

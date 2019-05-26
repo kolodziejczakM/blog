@@ -19,7 +19,9 @@
     "author": "Marcin Kołodziejczak",
     "license": "MIT",
     "dependencies": {
+        "@zeit/next-css": "^1.0.1",
         "babel-plugin-styled-components": "^1.10.0",
+        "highlight.js": "^9.15.6",
         "next": "^8.1.0",
         "parse-md": "^1.0.3",
         "particles.js": "^2.0.0",

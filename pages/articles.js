@@ -38,6 +38,30 @@ const StyledImg = styled.img`
 const StyledSection = styled.section`
     font-size: 20px;
     color: ${({ theme }) => theme.white};
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        border: ${({ theme }) => `1px solid ${theme.white}`};
+        text-align: left;
+    }
+
+    a {
+        color: ${({ theme }) => theme.orange};
+        text-decoration: none;
+
+        :hover {
+            text-decoration: underline;
+        }
+    }
 `;
 
 // TODO: move all staticTexts to decorator

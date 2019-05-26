@@ -3,10 +3,10 @@
  */
 
 const path = require('path');
-const parseMD = require('parse-md').default;
+const withCSS = require('@zeit/next-css');
 const articles = require('./data/articles.json');
 
-module.exports = {
+module.exports = withCSS({
     exportPathMap: function() {
         return {
             '/': { page: '/' },
@@ -21,4 +21,4 @@ module.exports = {
 
         return config;
     }
-};
+});
