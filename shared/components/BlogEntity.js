@@ -36,8 +36,9 @@ const StyledImg = styled.img`
 `;
 
 const StyledIcon = styled.img`
+    opacity: 0.5;
     position: absolute;
-    top: 10px;
+    ${({ bottom }) => (bottom ? 'bottom: 50px' : 'top: 10px')};
     right: 10px;
     width: 50px;
     height: 50px;
@@ -69,7 +70,16 @@ const StyledLabel = styled.section`
     }
 `;
 
-export const BlogEntity = ({ focus, title, backgroundFile, href, onMedium }) => {
+const iconsPath = '/static/icons';
+
+export const BlogEntity = ({
+    focus,
+    title,
+    backgroundFile,
+    href,
+    onMedium,
+    inPolish
+}) => {
     const [isFocused] = useState(focus);
     const ref = useRef();
 
@@ -81,7 +91,8 @@ export const BlogEntity = ({ focus, title, backgroundFile, href, onMedium }) => 
 
     return (
         <StyledBlogEntity href={href} ref={ref}>
-            {onMedium && <StyledIcon src="/static/icons/medium.svg" />}
+            {onMedium && <StyledIcon src={`${iconsPath}/medium.svg`} />}
+            {inPolish && <StyledIcon bottom src={`${iconsPath}/poland-flag.svg`} />}
             <StyledImg src={`/static/images/webp/${backgroundFile}`} alt={title} />
             <StyledLabel>{title}</StyledLabel>
         </StyledBlogEntity>
@@ -89,13 +100,16 @@ export const BlogEntity = ({ focus, title, backgroundFile, href, onMedium }) => 
 };
 
 BlogEntity.defaultProps = {
-    focus: false
+    focus: false,
+    onMedium: false,
+    inPolish: false
 };
 
 BlogEntity.propTypes = {
-    focus: bool,
     title: string.isRequired,
     backgroundFile: string.isRequired,
     href: string.isRequired,
-    onMedium: bool.isRequired
+    focus: bool,
+    onMedium: bool,
+    inPolish: bool
 };

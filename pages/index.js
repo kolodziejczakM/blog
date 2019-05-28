@@ -67,7 +67,7 @@ const Index = () => (
                         title={scenario.title}
                         backgroundFile={scenario.banner}
                         href={scenario.href}
-                        onMedium={false}
+                        inPolish
                     />
                 ))}
             </StyledGrid>
