@@ -69,6 +69,28 @@ const generateScenarios = () => {
     }, []);
 };
 
+const resizeBannerAndConvertToWebP = (banner, basePath) => async (_, dimensions) => {
+    const [bannerName] = banner.split('.');
+    const outputWidth = 600;
+    const ratio = dimensions.width / dimensions.height;
+
+    await sharp(`${basePath}/${banner}`)
+        .resize({
+            width: outputWidth,
+            height: outputWidth / ratio
+        })
+        .toFile(`${basePath}/compressed/${banner}`);
+
+    webp.cwebp(
+        `${basePath}/compressed/${banner}`,
+        `${basePath}/webp/${bannerName}.webp`,
+        '-q 70',
+        (status, error) => {
+            console.log('WebP compression: ', status, error);
+        }
+    );
+};
+
 exports.registerArticles = () => {
     writeContentToFile('data/articles.json', generateArticles());
 };
@@ -78,33 +100,12 @@ exports.registerScenarios = () => {
 };
 
 exports.convertBannersToWebP = async () => {
-    const banners = await readdir(path.join(__dirname, 'static/images'));
+    const basePath = 'static/images';
+    const banners = await readdir(path.join(__dirname, basePath));
 
     banners.forEach(banner => {
         if (!banner.includes('.')) return;
 
-        const [bannerName] = banner.split('.');
-        const basePath = 'static/images';
-
-        sizeOf(`${basePath}/${banner}`, async (_, dimensions) => {
-            const outputWidth = 600;
-            const factor = dimensions.width / dimensions.height;
-
-            await sharp(`${basePath}/${banner}`)
-                .resize({
-                    width: outputWidth,
-                    height: outputWidth / factor
-                })
-                .toFile(`${basePath}/compressed/${banner}`);
-
-            webp.cwebp(
-                `${basePath}/compressed/${banner}`,
-                `${basePath}/webp/${bannerName}.webp`,
-                '-q 70',
-                (status, error) => {
-                    console.log('WebP compression: ', status, error);
-                }
-            );
-        });
+        sizeOf(`${basePath}/${banner}`, resizeBannerAndConvertToWebP(banner, basePath));
     });
 };
