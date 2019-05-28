@@ -5,7 +5,7 @@
 import styled from 'styled-components';
 import WithLayout from '~components/WithLayout';
 import { BlogEntity } from '~components/BlogEntity';
-import articles from '~data/articles.json'; // TODO: do not import articles content here!!!
+import articles from '~data/articles.json';
 import scenarios from '~data/scenarios.json';
 
 const StyledGrid = styled.section`

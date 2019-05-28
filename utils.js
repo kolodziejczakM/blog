@@ -10,33 +10,46 @@ const webp = require('webp-converter');
 const sizeOf = require('image-size');
 const sharp = require('sharp');
 
-const getArticles = () => {
+const writeContentToFile = (outputFile, content) => {
+    fs.writeFile(path.join(__dirname, outputFile), JSON.stringify(content), err => {
+        if (err) console.log(err);
+        console.log(`Successfully written to: ${outputFile}`);
+    });
+};
+
+const generateArticles = () => {
     const postsPath = 'static/posts';
     const files = readdirSync(path.join(__dirname, postsPath));
 
     return files.reduce((acc, file) => {
-        const rawFileContent = readFileSync(
+        const fileName = file.split('.')[0];
+        const rawMarkdownFileContent = readFileSync(
             path.join(__dirname, `${postsPath}/${file}`),
             'utf-8'
         );
 
-        const { content, metadata } = parseMD(rawFileContent);
+        const { content, metadata } = parseMD(rawMarkdownFileContent);
         const basePath = '/articles';
+
+        writeContentToFile(`data/${fileName}.json`, content);
 
         return {
             ...acc,
-            [`${basePath}/${file.split('.')[0]}`]: {
+            [`${basePath}/${fileName}`]: {
                 page: basePath,
                 query: {
-                    content,
-                    metadata
+                    metadata: {
+                        ...metadata,
+                        onMedium: Boolean(metadata.onMedium),
+                        href: metadata.href || fileName
+                    }
                 }
             }
         };
     }, {});
 };
 
-const getScenarios = () => {
+const generateScenarios = () => {
     const scenariosPath = 'static/scenarios';
     const files = readdirSync(path.join(__dirname, scenariosPath));
 
@@ -57,25 +70,11 @@ const getScenarios = () => {
 };
 
 exports.registerArticles = () => {
-    fs.writeFile(
-        path.join(__dirname, 'data/articles.json'),
-        JSON.stringify(getArticles()),
-        err => {
-            if (err) console.log(err);
-            console.log('Successfully generated: data/articles.json.');
-        }
-    );
+    writeContentToFile('data/articles.json', generateArticles());
 };
 
 exports.registerScenarios = () => {
-    fs.writeFile(
-        path.join(__dirname, 'data/scenarios.json'),
-        JSON.stringify(getScenarios()),
-        err => {
-            if (err) console.log(err);
-            console.log('Successfully generated: data/scenarios.json.');
-        }
-    );
+    writeContentToFile('data/scenarios.json', generateScenarios());
 };
 
 exports.convertBannersToWebP = async () => {
@@ -86,30 +85,26 @@ exports.convertBannersToWebP = async () => {
 
         const [bannerName] = banner.split('.');
         const basePath = 'static/images';
+
         sizeOf(`${basePath}/${banner}`, async (_, dimensions) => {
-            console.log('Resizing start...');
+            const outputWidth = 600;
             const factor = dimensions.width / dimensions.height;
 
             await sharp(`${basePath}/${banner}`)
                 .resize({
-                    width: 600,
-                    height: 600 / factor
+                    width: outputWidth,
+                    height: outputWidth / factor
                 })
                 .toFile(`${basePath}/compressed/${banner}`);
-
-            console.log('Resizing done.');
-            console.log('Conversion start...');
 
             webp.cwebp(
                 `${basePath}/compressed/${banner}`,
                 `${basePath}/webp/${bannerName}.webp`,
                 '-q 70',
                 (status, error) => {
-                    console.log(status, error);
+                    console.log('WebP compression: ', status, error);
                 }
             );
-
-            console.log('Conversion done.');
         });
     });
 };

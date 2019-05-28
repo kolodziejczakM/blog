@@ -65,20 +65,22 @@ const StyledSection = styled.section`
 `;
 
 // TODO: move all staticTexts to decorator
-const Articles = withRouter(({ router: { query: { content, metadata } } }) => {
+const Articles = withRouter(({ router: { query: { metadata } } }) => {
     return (
-        <StyledGrid>
-            <StyledHeader>
-                <StyledHeading>{metadata.title}</StyledHeading>
-                <StyledImg
-                    src={`/static/images/webp/${metadata.backgroundFile}`}
-                    alt="article's banner"
-                />
-            </StyledHeader>
-            <StyledSection>
-                <ReactMarkdown source={content} />
-            </StyledSection>
-        </StyledGrid>
+        !metadata.onMedium && (
+            <StyledGrid>
+                <StyledHeader>
+                    <StyledHeading>{metadata.title}</StyledHeading>
+                    <StyledImg
+                        src={`/static/images/webp/${metadata.backgroundFile}`}
+                        alt="article's banner"
+                    />
+                </StyledHeader>
+                <StyledSection>
+                    <ReactMarkdown source={require(`~data/${metadata.href}.json`)} />
+                </StyledSection>
+            </StyledGrid>
+        )
     );
 });
 
