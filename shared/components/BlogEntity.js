@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { string, number, bool } from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
 
-// TODO: try to reuse Anchor instead of <a>
 const StyledBlogEntity = styled.a`
     outline: 1px solid ${({ theme }) => theme.lightGreen};
     position: relative;
@@ -57,6 +56,10 @@ const StyledLabel = styled.section`
     white-space: nowrap;
     overflow: hidden;
 
+    ::first-letter {
+        text-transform: uppercase;
+    }
+
     @media (max-width: 1200px) {
         font-size: 16px;
     }
@@ -66,8 +69,8 @@ const StyledLabel = styled.section`
     }
 `;
 
-export const BlogEntity = ({ id, title, backgroundFile, href, onMedium }) => {
-    const [isFocused] = useState(!id);
+export const BlogEntity = ({ focus, title, backgroundFile, href, onMedium }) => {
+    const [isFocused] = useState(focus);
     const ref = useRef();
 
     useEffect(() => {
@@ -77,16 +80,20 @@ export const BlogEntity = ({ id, title, backgroundFile, href, onMedium }) => {
     }, []);
 
     return (
-        <StyledBlogEntity id={id} href={href} ref={ref}>
+        <StyledBlogEntity href={href} ref={ref}>
             {onMedium && <StyledIcon src="/static/icons/medium.svg" />}
             <StyledImg src={`/static/images/webp/${backgroundFile}`} alt={title} />
-            <StyledLabel id={id}>{title}</StyledLabel>
+            <StyledLabel>{title}</StyledLabel>
         </StyledBlogEntity>
     );
 };
 
+BlogEntity.defaultProps = {
+    focus: false
+};
+
 BlogEntity.propTypes = {
-    id: number.isRequired,
+    focus: bool,
     title: string.isRequired,
     backgroundFile: string.isRequired,
     href: string.isRequired,

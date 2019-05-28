@@ -10,13 +10,15 @@
         "next-start": "next start",
         "next-export": "next export",
         "register-articles": "node -e 'require(\"./utils\").registerArticles()'",
+        "register-scenarios": "node -e 'require(\"./utils\").registerScenarios()'",
         "convert-banners": "node -e 'require(\"./utils\").convertBannersToWebP()'",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
     "pre-commit": [
         "precommit-msg",
-        "convert-banners",
-        "register-articles"
+        "register-articles",
+        "register-scenarios",
+        "convert-banners"
     ],
     "author": "Marcin Kołodziejczak",
     "license": "MIT",
