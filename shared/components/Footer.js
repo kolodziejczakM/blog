@@ -19,6 +19,10 @@ const items = [
     {
         href: 'https://www.linkedin.com/in/marcin-ko%C5%82odziejczak-3349aa10a/',
         label: 'Linkedin'
+    },
+    {
+        href: 'https://github.com/kolodziejczakM',
+        label: 'GitHub'
     }
 ];
 

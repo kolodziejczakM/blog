@@ -24,13 +24,13 @@ const StyledGrid = styled.section`
 `;
 
 const StyledSection = styled.section`
-    padding: 20px 0;
+    padding: 24px 0;
 `;
 
 const StyledHeading = styled.h1`
     color: ${({ theme }) => theme.white};
     font-size: 50px;
-    margin: 0 0 25px 0;
+    margin: 0 0 22px 0;
 
     @media (max-width: 1000px) {
         font-size: 32px;

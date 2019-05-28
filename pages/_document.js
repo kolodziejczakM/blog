@@ -26,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
         font-size: 14px;
         background: #333;
         color: #000;
+
+        @media (max-width: 600px) {
+            padding: 0 20px;
+        }
     }
 `;
 
