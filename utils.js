@@ -10,7 +10,7 @@ const webp = require('webp-converter');
 const sizeOf = require('image-size');
 const sharp = require('sharp');
 
-const writeContentToFile = (outputFile, content) => {
+const writeContentToFileAsJSON = (outputFile, content) => {
     fs.writeFile(path.join(__dirname, outputFile), JSON.stringify(content), err => {
         if (err) console.log(err);
         console.log(`Successfully written to: ${outputFile}`);
@@ -30,20 +30,22 @@ const generateArticles = () => {
 
         const { content, metadata } = parseMD(rawMarkdownFileContent);
         const basePath = '/articles';
+        const data = {
+            ...metadata,
+            onMedium: Boolean(metadata.onMedium),
+            href: metadata.href || fileName
+        };
 
-        writeContentToFile(`data/${fileName}.json`, content);
+        writeContentToFileAsJSON(`data/${fileName}.json`, {
+            ...data,
+            content
+        });
 
         return {
             ...acc,
             [`${basePath}/${fileName}`]: {
                 page: basePath,
-                query: {
-                    metadata: {
-                        ...metadata,
-                        onMedium: Boolean(metadata.onMedium),
-                        href: metadata.href || fileName
-                    }
-                }
+                query: { metadata: data }
             }
         };
     }, {});
@@ -92,11 +94,11 @@ const resizeBannerAndConvertToWebP = (banner, basePath) => async (_, dimensions)
 };
 
 exports.registerArticles = () => {
-    writeContentToFile('data/articles.json', generateArticles());
+    writeContentToFileAsJSON('data/articles.json', generateArticles());
 };
 
 exports.registerScenarios = () => {
-    writeContentToFile('data/scenarios.json', generateScenarios());
+    writeContentToFileAsJSON('data/scenarios.json', generateScenarios());
 };
 
 exports.convertBannersToWebP = async () => {

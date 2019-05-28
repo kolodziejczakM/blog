@@ -3,7 +3,7 @@
  */
 
 import styled from 'styled-components';
-import WithLayout from '~components/WithLayout';
+import Layout from '~components/WithLayout';
 import { Anchor } from '~components/Anchor';
 
 const StyledGrid = styled.section`
@@ -52,33 +52,38 @@ const StyledAnchor = styled(Anchor)`
 
 // TODO: move all staticTexts to decorator
 // TODO: path to images should be a const declared somewhere and imported here
-const About = () => {
-    return (
-        <StyledGrid>
-            <StyledHeader>
-                <StyledImg src="/static/images/webp/me.webp" alt="author" />
-                <StyledHeading>Marcin Kołodziejczak</StyledHeading>
-            </StyledHeader>
-            <StyledSection>
-                <StyledParagraph>
-                    I'm Senior Front-end Developer currently living in Poznań. In my free
-                    time I participate in open source projects, like these:
-                </StyledParagraph>
-                <StyledAnchor
-                    href="https://github.com/kolodziejczakM/password-backpack"
-                    label="https://github.com/kolodziejczakM/password-backpack"
-                />
-                <StyledAnchor
-                    href="https://github.com/kolodziejczakM/functional-snippets"
-                    label="https://github.com/kolodziejczakM/functional-snippets"
-                />
-                <StyledParagraph>
-                    In the past I used to direct short movies so feel free to ask about
-                    anything related :)
-                </StyledParagraph>
-            </StyledSection>
-        </StyledGrid>
-    );
-};
+class About extends React.Component {
+    render() {
+        return (
+            <Layout>
+                <StyledGrid>
+                    <StyledHeader>
+                        <StyledImg src="/static/images/webp/me.webp" alt="author" />
+                        <StyledHeading>Marcin Kołodziejczak</StyledHeading>
+                    </StyledHeader>
+                    <StyledSection>
+                        <StyledParagraph>
+                            I'm Senior Front-end Developer currently living in Poznań. In
+                            my free time I participate in open source projects, like
+                            these:
+                        </StyledParagraph>
+                        <StyledAnchor
+                            href="https://github.com/kolodziejczakM/password-backpack"
+                            label="https://github.com/kolodziejczakM/password-backpack"
+                        />
+                        <StyledAnchor
+                            href="https://github.com/kolodziejczakM/functional-snippets"
+                            label="https://github.com/kolodziejczakM/functional-snippets"
+                        />
+                        <StyledParagraph>
+                            In the past I used to direct short movies so feel free to ask
+                            about anything related :)
+                        </StyledParagraph>
+                    </StyledSection>
+                </StyledGrid>
+            </Layout>
+        );
+    }
+}
 
-export default WithLayout(About);
+export default About;

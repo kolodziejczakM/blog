@@ -4,7 +4,7 @@
 
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import WithLayout from '~components/WithLayout';
+import Layout from '~components/WithLayout';
 import { withRouter } from 'next/router';
 
 const StyledGrid = styled.section`
@@ -65,23 +65,27 @@ const StyledSection = styled.section`
 `;
 
 // TODO: move all staticTexts to decorator
-const Articles = withRouter(({ router: { query: { metadata } } }) => {
+const Articles = ({ router }) => {
+    const path = router.asPath.split('/');
+    const fileName = path[path.length - 1] || path[path.length - 2];
+    const data = require(`~data/${fileName}.json`);
+
     return (
-        !metadata.onMedium && (
+        <Layout>
             <StyledGrid>
                 <StyledHeader>
-                    <StyledHeading>{metadata.title}</StyledHeading>
+                    <StyledHeading>{data.title}</StyledHeading>
                     <StyledImg
-                        src={`/static/images/webp/${metadata.backgroundFile}`}
+                        src={`/static/images/webp/${data.backgroundFile}`}
                         alt="article's banner"
                     />
                 </StyledHeader>
                 <StyledSection>
-                    <ReactMarkdown source={require(`~data/${metadata.href}.json`)} />
+                    <ReactMarkdown source={data.content} />
                 </StyledSection>
             </StyledGrid>
-        )
+        </Layout>
     );
-});
+};
 
-export default WithLayout(Articles);
+export default withRouter(Articles);

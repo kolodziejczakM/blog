@@ -3,7 +3,7 @@
  */
 
 import styled from 'styled-components';
-import WithLayout from '~components/WithLayout';
+import Layout from '~components/WithLayout';
 import { BlogEntity } from '~components/BlogEntity';
 import articles from '~data/articles.json';
 import scenarios from '~data/scenarios.json';
@@ -37,42 +37,45 @@ const StyledHeading = styled.h1`
     }
 `;
 
+// TODO: Hoist Layout to App component (change its fileName), cause it wraps all pages
 const Index = () => (
-    <section>
-        <StyledSection>
-            <StyledHeading>Articles</StyledHeading>
-            <StyledGrid>
-                {Object.values(articles).map(({ query: { metadata } }, id) => (
-                    <BlogEntity
-                        key={metadata.title}
-                        focus={!id}
-                        title={metadata.title}
-                        backgroundFile={metadata.backgroundFile}
-                        href={
-                            metadata.onMedium
-                                ? metadata.href
-                                : `/articles/${metadata.href}`
-                        }
-                        onMedium={metadata.onMedium}
-                    />
-                ))}
-            </StyledGrid>
-        </StyledSection>
-        <StyledSection>
-            <StyledHeading>Scenarios</StyledHeading>
-            <StyledGrid>
-                {scenarios.map(scenario => (
-                    <BlogEntity
-                        key={scenario.id}
-                        title={scenario.title}
-                        backgroundFile={scenario.banner}
-                        href={scenario.href}
-                        inPolish
-                    />
-                ))}
-            </StyledGrid>
-        </StyledSection>
-    </section>
+    <Layout>
+        <section>
+            <StyledSection>
+                <StyledHeading>Articles</StyledHeading>
+                <StyledGrid>
+                    {Object.values(articles).map(({ query: { metadata } }, id) => (
+                        <BlogEntity
+                            key={metadata.title}
+                            focus={!id}
+                            title={metadata.title}
+                            backgroundFile={metadata.backgroundFile}
+                            href={
+                                metadata.onMedium
+                                    ? metadata.href
+                                    : `/articles/${metadata.href}`
+                            }
+                            onMedium={metadata.onMedium}
+                        />
+                    ))}
+                </StyledGrid>
+            </StyledSection>
+            <StyledSection>
+                <StyledHeading>Scenarios</StyledHeading>
+                <StyledGrid>
+                    {scenarios.map(scenario => (
+                        <BlogEntity
+                            key={scenario.id}
+                            title={scenario.title}
+                            backgroundFile={scenario.banner}
+                            href={scenario.href}
+                            inPolish
+                        />
+                    ))}
+                </StyledGrid>
+            </StyledSection>
+        </section>
+    </Layout>
 );
 
-export default WithLayout(Index);
+export default Index;
