@@ -3,10 +3,12 @@
  */
 
 import styled from 'styled-components';
+import { string, number, bool } from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
 
 // TODO: try to reuse Anchor instead of <a>
 const StyledBlogEntity = styled.a`
+    outline: 1px solid ${({ theme }) => theme.lightGreen};
     position: relative;
     cursor: pointer;
     color: ${({ theme }) => theme.lightGray};
@@ -34,6 +36,14 @@ const StyledImg = styled.img`
     }
 `;
 
+const StyledIcon = styled.img`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+`;
+
 const StyledLabel = styled.section`
     position: absolute;
     bottom: 0;
@@ -56,7 +66,7 @@ const StyledLabel = styled.section`
     }
 `;
 
-export const BlogEntity = ({ id, title, backgroundFile, href }) => {
+export const BlogEntity = ({ id, title, backgroundFile, href, onMedium }) => {
     const [isFocused] = useState(!id);
     const ref = useRef();
 
@@ -68,8 +78,17 @@ export const BlogEntity = ({ id, title, backgroundFile, href }) => {
 
     return (
         <StyledBlogEntity id={id} href={href} ref={ref}>
+            {onMedium && <StyledIcon src="/static/icons/medium.svg" />}
             <StyledImg src={`/static/images/webp/${backgroundFile}`} alt={title} />
             <StyledLabel id={id}>{title}</StyledLabel>
         </StyledBlogEntity>
     );
+};
+
+BlogEntity.propTypes = {
+    id: number.isRequired,
+    title: string.isRequired,
+    backgroundFile: string.isRequired,
+    href: string.isRequired,
+    onMedium: bool.isRequired
 };

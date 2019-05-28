@@ -61,7 +61,7 @@ exports.convertBannersToWebP = async () => {
             await sharp(`${basePath}/${banner}`)
                 .resize({
                     width: 600,
-                    height: 600 * factor
+                    height: 600 / factor
                 })
                 .toFile(`${basePath}/compressed/${banner}`);
 

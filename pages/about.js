@@ -30,6 +30,7 @@ const StyledHeading = styled.h1`
 `;
 
 const StyledImg = styled.img`
+    border: 1px solid ${({ theme }) => theme.lightGreen};
     object-fit: cover;
     width: 250px;
     height: 250px;

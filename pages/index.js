@@ -42,10 +42,15 @@ const Index = () => (
                     id={id}
                     title={metadata.title}
                     backgroundFile={metadata.backgroundFile}
-                    href={`/articles/${metadata.href}`}
+                    href={
+                        metadata.onMedium ? metadata.href : `/articles/${metadata.href}`
+                    }
+                    onMedium={metadata.onMedium}
                 />
             ))}
         </StyledGrid>
+        <StyledHeading>Scenarios</StyledHeading>
+        <StyledGrid />
     </section>
 );
 
