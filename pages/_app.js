@@ -10,13 +10,13 @@ import 'highlight.js/styles/vs2015.css';
 
 export default class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
-        const pageProps = {};
+        let initialProps = {};
 
         if (Component.getInitialProps) {
-            pageProps = await Component.getInitialProps(ctx);
+            initialProps = await Component.getInitialProps(ctx);
         }
 
-        return { pageProps };
+        return { initialProps };
     }
 
     componentDidMount() {
@@ -27,14 +27,14 @@ export default class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, initialProps } = this.props;
 
         return (
             <Container>
                 <Head>
                     <title>Front-end with passion</title>
                 </Head>
-                <Component {...pageProps} />
+                <Component {...pageProps} {...initialProps} />
             </Container>
         );
     }

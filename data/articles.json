@@ -1,1 +1,41 @@
-{"/articles/javascript-the-missing-parts":{"page":"/articles","query":{"metadata":{"title":"JavaScript - the missing parts","date":"28-05-2019","writtenBy":"Marcin Kołodziejczak","backgroundFile":"universe-man.webp","onMedium":false,"href":"javascript-the-missing-parts"}}},"/articles/privacy-in-modern-javascript-apps":{"page":"/articles","query":{"metadata":{"title":"Privacy in modern JavaScript apps","date":"01-02-2019","writtenBy":"Marcin Kołodziejczak","backgroundFile":"privacy-fence.webp","onMedium":true,"href":"https://medium.com/@kolodziejczak.mn/privacy-in-modern-javascript-apps-e59f0ce946cd"}}},"/articles/we-dont-need-null-at-all-im-not-undefined":{"page":"/articles","query":{"metadata":{"title":"We don't need null at all? I'm not undefined","date":"01-02-2019","writtenBy":"Marcin Kołodziejczak","backgroundFile":"blank-sticky.webp","onMedium":true,"href":"https://medium.com/@kolodziejczak.mn/we-dont-need-null-at-all-i-m-not-undefined-c1f2fea87475"}}}}
+{
+    "/articles/javascript-the-missing-parts": {
+        "page": "/articles",
+        "query": {
+            "metadata": {
+                "title": "JavaScript - the missing parts",
+                "date": "28-05-2019",
+                "writtenBy": "Marcin Kołodziejczak",
+                "backgroundFile": "universe-man.webp",
+                "onMedium": false,
+                "href": "javascript-the-missing-parts"
+            }
+        }
+    },
+    "/articles/privacy-in-modern-javascript-apps": {
+        "page": "/articles",
+        "query": {
+            "metadata": {
+                "title": "Privacy in modern JavaScript apps",
+                "date": "01-02-2019",
+                "writtenBy": "Marcin Kołodziejczak",
+                "backgroundFile": "privacy-fence.webp",
+                "onMedium": true,
+                "href": "https://medium.com/@kolodziejczak.mn/privacy-in-modern-javascript-apps-e59f0ce946cd"
+            }
+        }
+    },
+    "/articles/we-dont-need-null-at-all-im-not-undefined": {
+        "page": "/articles",
+        "query": {
+            "metadata": {
+                "title": "We don't need null at all? I'm not undefined",
+                "date": "01-02-2019",
+                "writtenBy": "Marcin Kołodziejczak",
+                "backgroundFile": "blank-sticky.webp",
+                "onMedium": true,
+                "href": "https://medium.com/@kolodziejczak.mn/we-dont-need-null-at-all-i-m-not-undefined-c1f2fea87475"
+            }
+        }
+    }
+}
