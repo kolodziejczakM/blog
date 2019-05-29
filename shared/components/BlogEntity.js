@@ -8,20 +8,20 @@ import { useState, useRef, useEffect } from 'react';
 import { colors, fontSizes, breakpoints } from '~components/WithLayout';
 
 const StyledBlogEntity = styled.a`
-    outline: 1px solid ${colors.lightGreen};
+    outline: 1px solid ${() => colors.lightGreen};
     position: relative;
     cursor: pointer;
-    color: ${colors.lightGray};
-    background: ${colors.white};
+    color: ${() => colors.lightGray};
+    background: ${() => colors.white};
 
     :hover {
         section {
-            background: ${colors.green};
+            background: ${() => colors.green};
         }
     }
 
     :focus {
-        outline: 4px solid ${colors.brightGreen};
+        outline: 4px solid ${() => colors.brightGreen};
     }
 `;
 
@@ -31,7 +31,7 @@ const StyledImg = styled.img`
     width: 100%;
     height: 200px;
 
-    @media (max-width: ${breakpoints[500]}) {
+    @media (max-width: ${() => breakpoints[500]}) {
         height: 150px;
     }
 `;
@@ -50,10 +50,10 @@ const StyledLabel = styled.section`
     bottom: 0;
     left: 0;
     width: 100%;
-    font-size: ${fontSizes[20]};
+    font-size: ${() => fontSizes[20]};
     padding: 10px;
-    color: ${colors.white};
-    background: ${colors.lightGreen};
+    color: ${() => colors.white};
+    background: ${() => colors.lightGreen};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -62,12 +62,12 @@ const StyledLabel = styled.section`
         text-transform: uppercase;
     }
 
-    @media (max-width: ${breakpoints[1200]}) {
-        font-size: ${fontSizes[16]};
+    @media (max-width: ${() => breakpoints[1200]}) {
+        font-size: ${() => fontSizes[16]};
     }
 
-    @media (max-width: ${breakpoints[500]}) {
-        font-size: ${fontSizes[14]};
+    @media (max-width: ${() => breakpoints[500]}) {
+        font-size: ${() => fontSizes[14]};
     }
 `;
 

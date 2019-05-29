@@ -41,12 +41,12 @@ const StyledHeading = styled.h1`
     font-size: ${() => fontSizes[50]};
     margin: 0 0 22px 0;
 
-    @media (max-width: 500px) {
-        font-size: ${() => fontSizes[24]};
-    }
-
     @media (max-width: ${() => breakpoints[1000]}) {
         font-size: ${() => fontSizes[32]};
+    }
+
+    @media (max-width: 500px) {
+        font-size: ${() => fontSizes[24]};
     }
 `;
 
