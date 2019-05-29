@@ -13,15 +13,20 @@ import WithLayout, {
 import { withRouter } from 'next/router';
 
 const StyledGrid = styled.section`
+    background: ${() => colors.gray};
     margin: 0 auto;
     display: grid;
-    width: 80%;
+    width: 800px;
     z-index: ${() => zIndexes[1]};
     gap: 40px 80px;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
 
-    @media (max-width: ${() => breakpoints[500]}) {
+    @media (max-width: ${() => breakpoints[1000]}) {
+        width: 80%;
+    }
+
+    @media (max-width: ${() => breakpoints[600]}) {
         width: 100%;
     }
 `;
@@ -45,6 +50,10 @@ const StyledHeading = styled.h1`
     @media (max-width: ${() => breakpoints[700]}) {
         font-size: ${() => fontSizes[24]};
     }
+
+    @media (max-width: ${() => breakpoints[500]}) {
+        font-size: ${() => fontSizes[22]};
+    }
 `;
 
 const StyledImg = styled.img`
@@ -56,7 +65,7 @@ const StyledImg = styled.img`
         height: 200px;
     }
 
-    @media (max-width: ${() => breakpoints[500]}) {
+    @media (max-width: ${() => breakpoints[600]}) {
         height: 100px;
     }
 `;
@@ -64,6 +73,7 @@ const StyledImg = styled.img`
 const StyledSection = styled.section`
     font-size: ${() => fontSizes[20]};
     color: ${() => colors.white};
+    padding: 10px;
 
     h1 {
         margin-top: 0;
@@ -103,7 +113,7 @@ const StyledSection = styled.section`
         }
 
         h1 {
-            font-size: ${() => fontSizes[22]};
+            font-size: ${() => fontSizes[20]};
         }
 
         h2 {
@@ -111,7 +121,8 @@ const StyledSection = styled.section`
         }
     }
 
-    @media (max-width: ${() => breakpoints[500]}) {
+    @media (max-width: ${() => breakpoints[600]}) {
+        padding: 0;
         font-size: ${() => fontSizes[14]};
 
         code {
