@@ -3,13 +3,18 @@
  */
 
 import styled from 'styled-components';
-import WithLayout from '~components/WithLayout';
+import WithLayout, {
+    colors,
+    breakpoints,
+    fontSizes,
+    zIndexes
+} from '~components/WithLayout';
 import { BlogEntity } from '~components/BlogEntity';
 import articles from '~data/articles.json';
 import scenarios from '~data/scenarios.json';
 
 const StyledGrid = styled.section`
-    z-index: 1;
+    z-index: ${() => zIndexes[1]};
     display: grid;
     position: relative;
     gap: 40px 80px;
@@ -17,7 +22,7 @@ const StyledGrid = styled.section`
     grid-template-rows: 1fr;
     grid-auto-rows: 1fr;
 
-    @media (max-width: 1000px) {
+    @media (max-width: ${() => breakpoints[1000]}) {
         gap: 20px 40px;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
@@ -28,13 +33,13 @@ const StyledSection = styled.section`
 `;
 
 const StyledHeading = styled.h1`
-    color: ${({ theme }) => theme.white};
+    color: ${() => colors.white};
     font-weight: normal;
-    font-size: 50px;
+    font-size: ${() => fontSizes[50]};
     margin: 0 0 22px 0;
 
-    @media (max-width: 1000px) {
-        font-size: 32px;
+    @media (max-width: ${() => breakpoints[1000]}) {
+        font-size: ${() => fontSizes[32]};
     }
 `;
 

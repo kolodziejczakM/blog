@@ -4,9 +4,10 @@
 
 import Link from 'next/link';
 import styled from 'styled-components';
+import { colors } from '~components/WithLayout';
 
 const A = styled.a`
-    color: ${({ theme }) => theme.white};
+    color: ${() => colors.white};
     text-decoration: none;
 
     :hover {
@@ -14,7 +15,7 @@ const A = styled.a`
     }
 
     :focus {
-        outline: 4px solid ${({ theme }) => theme.brightGreen};
+        outline: 4px solid ${() => colors.brightGreen};
     }
 `;
 

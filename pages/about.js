@@ -3,11 +3,16 @@
  */
 
 import styled from 'styled-components';
-import WithLayout from '~components/WithLayout';
+import WithLayout, {
+    colors,
+    fontSizes,
+    breakpoints,
+    zIndexes
+} from '~components/WithLayout';
 import { Anchor } from '~components/Anchor';
 
 const StyledGrid = styled.section`
-    z-index: 1;
+    z-index: ${() => zIndexes[1]};
     width: 80%;
     margin: 0 auto;
     display: grid;
@@ -15,11 +20,11 @@ const StyledGrid = styled.section`
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
 
-    @media (max-width: 1000px) {
+    @media (max-width: ${() => breakpoints[1000]}) {
         gap: 20px 40px;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: ${() => breakpoints[500]}) {
         width: 100%;
     }
 `;
@@ -31,29 +36,28 @@ const StyledHeader = styled.header`
     justify-items: center;
 `;
 
-// TODO: it's 100% (?) copy of StyledHeading from index.js
 const StyledHeading = styled.h1`
-    color: ${({ theme }) => theme.white};
-    font-size: 50px;
+    color: ${() => colors.white};
+    font-size: ${() => fontSizes[50]};
     margin: 0 0 22px 0;
 
-    @media (max-width: 1000px) {
-        font-size: 32px;
+    @media (max-width: 500px) {
+        font-size: ${() => fontSizes[24]};
     }
 
-    @media (max-width: 500px) {
-        font-size: 24px;
+    @media (max-width: ${() => breakpoints[1000]}) {
+        font-size: ${() => fontSizes[32]};
     }
 `;
 
 const StyledImg = styled.img`
-    border: 1px solid ${({ theme }) => theme.lightGreen};
+    border: 1px solid ${() => colors.lightGreen};
     object-fit: cover;
     width: 250px;
     height: 250px;
     border-radius: 50%;
 
-    @media (max-width: 500px) {
+    @media (max-width: ${() => breakpoints[500]}) {
         width: 200px;
         height: 200px;
     }
@@ -64,28 +68,28 @@ const StyledSection = styled.section`
 `;
 
 const StyledParagraph = styled.p`
-    font-size: 20px;
-    color: ${({ theme }) => theme.white};
+    font-size: ${() => fontSizes[20]};
+    color: ${() => colors.white};
 
-    @media (max-width: 1200px) {
-        font-size: 16px;
+    @media (max-width: ${() => breakpoints[1200]}) {
+        font-size: ${() => fontSizes[16]};
     }
 
-    @media (max-width: 500px) {
-        font-size: 14px;
+    @media (max-width: ${() => breakpoints[500]}) {
+        font-size: ${() => fontSizes[14]};
     }
 `;
 
 const StyledAnchor = styled(Anchor)`
-    font-size: 20px;
+    font-size: ${() => fontSizes[20]};
     margin-bottom: 3px;
 
-    @media (max-width: 1200px) {
-        font-size: 16px;
+    @media (max-width: ${() => breakpoints[1200]}) {
+        font-size: ${() => fontSizes[16]};
     }
 
-    @media (max-width: 500px) {
-        font-size: 14px;
+    @media (max-width: ${() => breakpoints[500]}) {
+        font-size: ${() => fontSizes[14]};
     }
 `;
 

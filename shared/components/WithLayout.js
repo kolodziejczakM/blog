@@ -3,9 +3,43 @@
  */
 
 import { useEffect } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import { Header } from '~components/Header';
 import { Footer } from '~components/Footer';
+
+export const zIndexes = {
+    1: 1
+};
+
+export const fontSizes = {
+    12: '12px',
+    14: '14px',
+    16: '16px',
+    18: '18px',
+    20: '20px',
+    22: '22px',
+    24: '24px',
+    32: '32px',
+    50: '50px'
+};
+
+export const breakpoints = {
+    500: '500px',
+    600: '600px',
+    700: '700px',
+    1000: '1000px',
+    1200: '1200px'
+};
+
+export const colors = {
+    lighGray: '#666',
+    gray: '#333',
+    white: '#FFF',
+    orange: '#CC927A',
+    lightGreen: '#8F998A',
+    green: '#567356',
+    brightGreen: '#56AA56'
+};
 
 const StyledGrid = styled.main`
     display: grid;
@@ -43,25 +77,13 @@ const WithLayout = Page => props => {
         });
     }, []);
 
-    const colors = {
-        lighGray: '#666',
-        gray: '#333',
-        white: '#FFF',
-        orange: '#CC927A',
-        lightGreen: '#8F998A',
-        green: '#567356',
-        brightGreen: '#56AA56'
-    };
-
     return (
-        <ThemeProvider theme={colors}>
-            <StyledGrid>
-                <div id="particles-js" />
-                <StyledHeader />
-                <Page {...props} />
-                <StyledFooter />
-            </StyledGrid>
-        </ThemeProvider>
+        <StyledGrid>
+            <div id="particles-js" />
+            <StyledHeader />
+            <Page {...props} />
+            <StyledFooter />
+        </StyledGrid>
     );
 };
 

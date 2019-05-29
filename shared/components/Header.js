@@ -7,6 +7,7 @@ import { ListItem } from '~components/ListItem';
 import { UnorderedList } from '~components/UnorderedList';
 import { Anchor } from '~components/Anchor';
 import { withRouter } from 'next/router';
+import { fontSizes, zIndexes } from '~components/WithLayout';
 
 const activeElementPrefix = '>';
 
@@ -22,11 +23,11 @@ const items = [
 ];
 
 const StyledHeader = styled.header`
-    z-index: 1;
+    z-index: ${() => zIndexes[1]};
 `;
 
 const StyledAnchor = styled(Anchor)`
-    font-size: 16px;
+    font-size: ${() => fontSizes[16]};
 `;
 
 const HeaderLink = ({ href, label, isActive }) => (
