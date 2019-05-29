@@ -35,7 +35,7 @@ const StyledFooter = styled(Footer)`
     padding: 20px 0;
 `;
 
-const Layout = ({ children }) => {
+const WithLayout = Page => props => {
     useEffect(() => {
         // has to be here because of its dependency to window object
         import('particles.js').then(() => {
@@ -58,11 +58,11 @@ const Layout = ({ children }) => {
             <StyledGrid>
                 <div id="particles-js" />
                 <StyledHeader />
-                {children}
+                <Page {...props} />
                 <StyledFooter />
             </StyledGrid>
         </ThemeProvider>
     );
 };
 
-export default Layout;
+export default WithLayout;

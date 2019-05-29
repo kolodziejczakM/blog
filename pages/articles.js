@@ -4,7 +4,7 @@
 
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import Layout from '~components/WithLayout';
+import WithLayout from '~components/WithLayout';
 import { withRouter } from 'next/router';
 
 const StyledGrid = styled.section`
@@ -24,6 +24,7 @@ const StyledHeader = styled.header`
 `;
 
 const StyledHeading = styled.h1`
+    font-weight: normal;
     color: ${({ theme }) => theme.white};
     font-size: 50px;
     margin: 0;
@@ -41,6 +42,7 @@ const StyledSection = styled.section`
 
     h1 {
         font-size: 30px;
+        font-weight: normal;
     }
 
     h2 {
@@ -71,21 +73,19 @@ const Articles = ({ router }) => {
     const data = require(`~data/${fileName}.json`);
 
     return (
-        <Layout>
-            <StyledGrid>
-                <StyledHeader>
-                    <StyledHeading>{data.title}</StyledHeading>
-                    <StyledImg
-                        src={`/static/images/webp/${data.backgroundFile}`}
-                        alt="article's banner"
-                    />
-                </StyledHeader>
-                <StyledSection>
-                    <ReactMarkdown source={data.content} />
-                </StyledSection>
-            </StyledGrid>
-        </Layout>
+        <StyledGrid>
+            <StyledHeader>
+                <StyledHeading>{data.title}</StyledHeading>
+                <StyledImg
+                    src={`/static/images/webp/${data.backgroundFile}`}
+                    alt="article's banner"
+                />
+            </StyledHeader>
+            <StyledSection>
+                <ReactMarkdown source={data.content} />
+            </StyledSection>
+        </StyledGrid>
     );
 };
 
-export default withRouter(Articles);
+export default WithLayout(withRouter(Articles));
