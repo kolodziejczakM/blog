@@ -13,7 +13,15 @@ const StyledGrid = styled.section`
     display: grid;
     gap: 40px 80px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+
+    @media (max-width: 1000px) {
+        gap: 20px 40px;
+    }
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
 `;
 
 const StyledHeader = styled.header`
@@ -23,10 +31,19 @@ const StyledHeader = styled.header`
     justify-items: center;
 `;
 
+// TODO: it's 100% (?) copy of StyledHeading from index.js
 const StyledHeading = styled.h1`
     color: ${({ theme }) => theme.white};
     font-size: 50px;
-    margin: 0;
+    margin: 0 0 22px 0;
+
+    @media (max-width: 1000px) {
+        font-size: 32px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 24px;
+    }
 `;
 
 const StyledImg = styled.img`
@@ -35,6 +52,11 @@ const StyledImg = styled.img`
     width: 250px;
     height: 250px;
     border-radius: 50%;
+
+    @media (max-width: 500px) {
+        width: 200px;
+        height: 200px;
+    }
 `;
 
 const StyledSection = styled.section`
@@ -44,10 +66,27 @@ const StyledSection = styled.section`
 const StyledParagraph = styled.p`
     font-size: 20px;
     color: ${({ theme }) => theme.white};
+
+    @media (max-width: 1200px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 14px;
+    }
 `;
 
 const StyledAnchor = styled(Anchor)`
     font-size: 20px;
+    margin-bottom: 3px;
+
+    @media (max-width: 1200px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 14px;
+    }
 `;
 
 // TODO: move all staticTexts to decorator
