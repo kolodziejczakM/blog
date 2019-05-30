@@ -62,6 +62,7 @@ export const registerFontFace = (fontName, fontFileName, fontWeight) => {
         @font-face{
             font-family: '${fontName}';
             font-weight: '${fontWeight}';
+            font-display: 'fallback';
             src: local('${fontName}'),
                 url('${basePath}/${fontFileName}.woff2') format('woff2'),
                 url('${basePath}/${fontFileName}.woff') format('woff'),

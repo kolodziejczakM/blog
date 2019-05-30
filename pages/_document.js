@@ -55,7 +55,10 @@ export default class MyDocument extends Document {
     render() {
         return (
             <html>
-                <Head>{this.props.styleTags}</Head>
+                <Head>
+                    <meta name="theme-color" />
+                    {this.props.styleTags}
+                </Head>
                 <body>
                     <GlobalStyles />
                     <Main />
