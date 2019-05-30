@@ -7,7 +7,6 @@ import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 import { registerFontFace } from '~utils/fonts';
 import { breakpoints, colors, fontSizes } from '~shared/theme';
 
-// TODO: import colors from withLayout
 const GlobalStyles = createGlobalStyle`
     ${registerFontFace('Public Sans', 'PublicSans-Regular', 'normal')}
     ${registerFontFace('Public Sans Bold', 'PublicSans-Bold', 'bold')}

@@ -42,7 +42,7 @@ const _breakpoints = {
 const _colors = {
     white: '#FFF',
     black: '#000',
-    lighGray: '#666',
+    lightGray: '#666',
     gray: '#333',
     orange: '#CC927A',
     brightGreen: '#56AA56',

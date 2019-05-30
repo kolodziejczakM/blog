@@ -9,7 +9,6 @@ import WithLayout from '~components/WithLayout';
 import { withRouter } from 'next/router';
 
 const StyledGrid = styled.section`
-    background: ${colors.gray};
     margin: 0 auto;
     display: grid;
     width: 800px;
@@ -67,6 +66,7 @@ const StyledImg = styled.img`
 `;
 
 const StyledSection = styled.section`
+    background: ${colors.gray};
     font-size: ${fontSizes[20]};
     color: ${colors.white};
     padding: 10px;
