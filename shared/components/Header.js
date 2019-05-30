@@ -33,6 +33,7 @@ const StyledAnchor = styled(Anchor)`
 
 const StyledListItem = styled(ListItem)`
     padding: 5px 0;
+    margin-right: 15px;
 `;
 
 const HeaderLink = ({ href, label, isActive }) => (

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { string, bool } from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
 import { colors, fontSizes, breakpoints } from '~shared/theme';
+import WithStaticTexts from '~components/WithStaticTexts';
 
 const StyledBlogEntity = styled.a`
     outline: 1px solid ${colors.lightGreen};
@@ -73,32 +74,39 @@ const StyledLabel = styled.section`
 
 const iconsPath = '/static/icons';
 
-export const BlogEntity = ({
-    focus,
-    title,
-    backgroundFile,
-    href,
-    onMedium,
-    inPolish
-}) => {
-    const [isFocused] = useState(focus);
-    const ref = useRef();
+export const BlogEntity = WithStaticTexts(
+    {
+        mediumIcon: 'medium.svg',
+        polandIcon: 'poland-flag.svg',
+        imagesPath: '/static/images/webp'
+    },
+    ({ focus, title, backgroundFile, href, onMedium, inPolish, staticTexts }) => {
+        const [isFocused] = useState(focus);
+        const ref = useRef();
 
-    useEffect(() => {
-        if (isFocused) {
-            ref.current.focus();
-        }
-    }, []);
+        useEffect(() => {
+            if (isFocused) {
+                ref.current.focus();
+            }
+        }, []);
 
-    return (
-        <StyledBlogEntity href={href} ref={ref}>
-            {onMedium && <StyledIcon src={`${iconsPath}/medium.svg`} />}
-            {inPolish && <StyledIcon bottom src={`${iconsPath}/poland-flag.svg`} />}
-            <StyledImg src={`/static/images/webp/${backgroundFile}`} alt={title} />
-            <StyledLabel>{title}</StyledLabel>
-        </StyledBlogEntity>
-    );
-};
+        return (
+            <StyledBlogEntity href={href} ref={ref}>
+                {onMedium && (
+                    <StyledIcon src={`${iconsPath}/${staticTexts.mediumIcon}`} />
+                )}
+                {inPolish && (
+                    <StyledIcon bottom src={`${iconsPath}/${staticTexts.polandIcon}`} />
+                )}
+                <StyledImg
+                    src={`${staticTexts.imagesPath}/${backgroundFile}`}
+                    alt={title}
+                />
+                <StyledLabel>{title}</StyledLabel>
+            </StyledBlogEntity>
+        );
+    }
+);
 
 BlogEntity.defaultProps = {
     focus: false,

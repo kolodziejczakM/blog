@@ -5,6 +5,7 @@
 import styled from 'styled-components';
 import { breakpoints, colors, zIndexes, fontSizes } from '~shared/theme';
 import WithLayout from '~components/WithLayout';
+import WithStaticTexts from '~components/WithStaticTexts';
 import { BlogEntity } from '~components/BlogEntity';
 import articles from '~data/articles.json';
 import scenarios from '~data/scenarios.json';
@@ -39,42 +40,48 @@ const StyledHeading = styled.h1`
     }
 `;
 
-const Index = () => (
-    <section>
-        <StyledSection>
-            <StyledHeading>Articles</StyledHeading>
-            <StyledGrid>
-                {Object.values(articles).map(({ query: { metadata } }, id) => (
-                    <BlogEntity
-                        key={metadata.title}
-                        focus={!id}
-                        title={metadata.title}
-                        backgroundFile={metadata.backgroundFile}
-                        href={
-                            metadata.onMedium
-                                ? metadata.href
-                                : `/articles/${metadata.href}`
-                        }
-                        onMedium={metadata.onMedium}
-                    />
-                ))}
-            </StyledGrid>
-        </StyledSection>
-        <StyledSection>
-            <StyledHeading>Scenarios</StyledHeading>
-            <StyledGrid>
-                {scenarios.map(scenario => (
-                    <BlogEntity
-                        key={scenario.id}
-                        title={scenario.title}
-                        backgroundFile={scenario.banner}
-                        href={scenario.href}
-                        inPolish
-                    />
-                ))}
-            </StyledGrid>
-        </StyledSection>
-    </section>
+const Index = WithStaticTexts(
+    {
+        articles: 'Articles',
+        scenarios: 'Scenarios'
+    },
+    ({ staticTexts }) => (
+        <section>
+            <StyledSection>
+                <StyledHeading>{staticTexts.articles}</StyledHeading>
+                <StyledGrid>
+                    {Object.values(articles).map(({ query: { metadata } }, id) => (
+                        <BlogEntity
+                            key={metadata.title}
+                            focus={!id}
+                            title={metadata.title}
+                            backgroundFile={metadata.backgroundFile}
+                            href={
+                                metadata.onMedium
+                                    ? metadata.href
+                                    : `/articles/${metadata.href}`
+                            }
+                            onMedium={metadata.onMedium}
+                        />
+                    ))}
+                </StyledGrid>
+            </StyledSection>
+            <StyledSection>
+                <StyledHeading>{staticTexts.scenarios}</StyledHeading>
+                <StyledGrid>
+                    {scenarios.map(scenario => (
+                        <BlogEntity
+                            key={scenario.id}
+                            title={scenario.title}
+                            backgroundFile={scenario.banner}
+                            href={scenario.href}
+                            inPolish
+                        />
+                    ))}
+                </StyledGrid>
+            </StyledSection>
+        </section>
+    )
 );
 
 export default WithLayout(Index);

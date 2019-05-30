@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { breakpoints, colors, zIndexes, fontSizes } from '~shared/theme';
 import WithLayout from '~components/WithLayout';
+import WithStaticTexts from '~components/WithStaticTexts';
 import { withRouter } from 'next/router';
 
 const StyledGrid = styled.section`
@@ -144,26 +145,31 @@ const StyledSection = styled.section`
     }
 `;
 
-// TODO: move all staticTexts to decorator
-const Articles = ({ router }) => {
-    const path = router.asPath.split('/');
-    const fileName = path[path.length - 1] || path[path.length - 2];
-    const data = require(`~data/${fileName}.json`);
+const Articles = WithStaticTexts(
+    {
+        bannerAlt: "article's banner",
+        imagesPath: '/static/images/webp'
+    },
+    ({ router, staticTexts }) => {
+        const path = router.asPath.split('/');
+        const fileName = path[path.length - 1] || path[path.length - 2];
+        const data = require(`~data/${fileName}.json`);
 
-    return (
-        <StyledGrid>
-            <StyledHeader>
-                <StyledHeading>{data.title}</StyledHeading>
-                <StyledImg
-                    src={`/static/images/webp/${data.backgroundFile}`}
-                    alt="article's banner"
-                />
-            </StyledHeader>
-            <StyledSection>
-                <ReactMarkdown source={data.content} />
-            </StyledSection>
-        </StyledGrid>
-    );
-};
+        return (
+            <StyledGrid>
+                <StyledHeader>
+                    <StyledHeading>{data.title}</StyledHeading>
+                    <StyledImg
+                        src={`${staticTexts.imagesPath}/${data.backgroundFile}`}
+                        alt={staticTexts.bannerAlt}
+                    />
+                </StyledHeader>
+                <StyledSection>
+                    <ReactMarkdown source={data.content} />
+                </StyledSection>
+            </StyledGrid>
+        );
+    }
+);
 
 export default WithLayout(withRouter(Articles));

@@ -5,6 +5,7 @@
 import styled from 'styled-components';
 import { breakpoints, colors, zIndexes, fontSizes } from '~shared/theme';
 import WithLayout from '~components/WithLayout';
+import WithStaticTexts from '~components/WithStaticTexts';
 import { Anchor } from '~components/Anchor';
 
 const StyledGrid = styled.section`
@@ -89,37 +90,41 @@ const StyledAnchor = styled(Anchor)`
     }
 `;
 
-// TODO: move all staticTexts to decorator
 // TODO: path to images should be a const declared somewhere and imported here
-class About extends React.Component {
-    render() {
-        return (
-            <StyledGrid>
-                <StyledHeader>
-                    <StyledImg src="/static/images/webp/me.webp" alt="author" />
-                    <StyledHeading>Marcin Kołodziejczak</StyledHeading>
-                </StyledHeader>
-                <StyledSection>
-                    <StyledParagraph>
-                        I'm Senior Front-end Developer currently living in Poznań. In my
-                        free time I participate in open source projects, like these:
-                    </StyledParagraph>
-                    <StyledAnchor
-                        href="https://github.com/kolodziejczakM/password-backpack"
-                        label="https://github.com/kolodziejczakM/password-backpack"
-                    />
-                    <StyledAnchor
-                        href="https://github.com/kolodziejczakM/functional-snippets"
-                        label="https://github.com/kolodziejczakM/functional-snippets"
-                    />
-                    <StyledParagraph>
-                        In the past I used to direct short movies so feel free to ask
-                        about anything related :)
-                    </StyledParagraph>
-                </StyledSection>
-            </StyledGrid>
-        );
-    }
-}
+const About = WithStaticTexts(
+    {
+        authorName: 'Marcin Kołodziejczak',
+        now: `I'm Senior Front-end Developer currently living in Poznań. In my free time
+    I participate in open source projects, like these:`,
+        past: `In the past I used to direct short movies so feel free to ask about
+    anything related :)`,
+        passwordBackpackLabel: 'Password backpack',
+        passwordBackpackHref: 'https://github.com/kolodziejczakM/password-backpack',
+        functionalSnippetsLabel: 'Functional Snippets',
+        functionalSnippetsHref: 'https://github.com/kolodziejczakM/functional-snippets',
+        bannerAlt: 'author',
+        imagePath: '/static/images/webp/me.webp'
+    },
+    ({ staticTexts }) => (
+        <StyledGrid>
+            <StyledHeader>
+                <StyledImg src={staticTexts.imagePath} alt={staticTexts.bannerAlt} />
+                <StyledHeading>{staticTexts.authorName}</StyledHeading>
+            </StyledHeader>
+            <StyledSection>
+                <StyledParagraph>{staticTexts.now}</StyledParagraph>
+                <StyledAnchor
+                    href={staticTexts.passwordBackpackHref}
+                    label={staticTexts.passwordBackpackLabel}
+                />
+                <StyledAnchor
+                    href={staticTexts.functionalSnippetsHref}
+                    label={staticTexts.functionalSnippetsLabel}
+                />
+                <StyledParagraph>{staticTexts.past}</StyledParagraph>
+            </StyledSection>
+        </StyledGrid>
+    )
+);
 
 export default WithLayout(About);

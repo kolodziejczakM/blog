@@ -4,8 +4,7 @@
 
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
-import { registerFontFace } from '~utils/fonts';
-import { breakpoints, colors, fontSizes } from '~shared/theme';
+import { breakpoints, colors, fontSizes, registerFontFace } from '~shared/theme';
 
 const GlobalStyles = createGlobalStyle`
     ${registerFontFace('Public Sans', 'PublicSans-Regular', 'normal')}
