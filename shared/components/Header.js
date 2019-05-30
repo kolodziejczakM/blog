@@ -24,6 +24,7 @@ const items = [
 
 const StyledHeader = styled.header`
     z-index: ${() => zIndexes[1]};
+    margin-bottom: 15px;
 `;
 
 const StyledAnchor = styled(Anchor)`
