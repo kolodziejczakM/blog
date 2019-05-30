@@ -5,6 +5,7 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 import { registerFontFace } from '~utils/fonts';
+import { breakpoints, colors, fontSizes } from '~shared/theme';
 
 // TODO: import colors from withLayout
 const GlobalStyles = createGlobalStyle`
@@ -23,12 +24,16 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0 40px;
         font-family: Public Sans;
-        font-size: 14px;
-        background: #333;
-        color: #000;
+        font-size: ${fontSizes[14]};
+        background: ${colors.gray};
+        color: ${colors.black};
 
-        @media (max-width: 600px) {
+        @media (max-width: ${breakpoints[600]}) {
             padding: 0 20px;
+        }
+
+        @media (max-width: ${breakpoints[400]}) {
+            padding: 0 8px;
         }
     }
 `;

@@ -4,10 +4,10 @@
 
 import Link from 'next/link';
 import styled from 'styled-components';
-import { colors } from '~components/WithLayout';
+import { colors } from '~shared/theme';
 
 const A = styled.a`
-    color: ${() => colors.white};
+    color: ${colors.white};
     text-decoration: none;
 
     :hover {
@@ -15,7 +15,7 @@ const A = styled.a`
     }
 
     :focus {
-        outline: 4px solid ${() => colors.brightGreen};
+        outline: 4px solid ${colors.brightGreen};
     }
 `;
 

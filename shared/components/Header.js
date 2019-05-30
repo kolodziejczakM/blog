@@ -3,11 +3,11 @@
  */
 
 import styled from 'styled-components';
+import { zIndexes, fontSizes } from '~shared/theme';
 import { ListItem } from '~components/ListItem';
 import { UnorderedList } from '~components/UnorderedList';
 import { Anchor } from '~components/Anchor';
 import { withRouter } from 'next/router';
-import { fontSizes, zIndexes } from '~components/WithLayout';
 
 const activeElementPrefix = '>';
 
@@ -23,21 +23,25 @@ const items = [
 ];
 
 const StyledHeader = styled.header`
-    z-index: ${() => zIndexes[1]};
+    z-index: ${zIndexes[1]};
     margin-bottom: 15px;
 `;
 
 const StyledAnchor = styled(Anchor)`
-    font-size: ${() => fontSizes[16]};
+    font-size: ${fontSizes[16]};
+`;
+
+const StyledListItem = styled(ListItem)`
+    padding: 5px 0;
 `;
 
 const HeaderLink = ({ href, label, isActive }) => (
-    <ListItem>
+    <StyledListItem>
         <StyledAnchor
             href={href}
             label={isActive ? `${activeElementPrefix} ${label}` : label}
         />
-    </ListItem>
+    </StyledListItem>
 );
 
 export const Header = withRouter(({ className, router }) => (
