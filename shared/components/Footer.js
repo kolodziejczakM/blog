@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { ListItem } from '~components/ListItem';
 import { UnorderedList } from '~components/UnorderedList';
 import { Anchor } from '~components/Anchor';
-import { fontSizes, zIndexes } from '~shared/theme';
+import { fontSizes, zIndexes, breakpoints } from '~shared/theme';
 
 const items = [
     {
@@ -35,10 +35,16 @@ const StyledAnchor = styled(Anchor)`
     font-size: ${fontSizes[16]};
 `;
 
+const StyledListItem = styled(ListItem)`
+    @media (max-width: ${breakpoints[500]}) {
+        margin-right: 5px;
+    }
+`;
+
 const FooterLink = ({ href, label }) => (
-    <ListItem>
+    <StyledListItem>
         <StyledAnchor href={href} label={label} />
-    </ListItem>
+    </StyledListItem>
 );
 
 export const Footer = ({ className }) => (
