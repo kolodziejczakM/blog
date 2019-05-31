@@ -56,7 +56,8 @@ export default class MyDocument extends Document {
         return (
             <html>
                 <Head>
-                    <meta name="theme-color" />
+                    <link rel="manifest" href="/static/manifest.json" />
+                    <meta name="theme-color" content="#cccccc" />
                     {this.props.styleTags}
                 </Head>
                 <body>
