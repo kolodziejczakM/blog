@@ -29,7 +29,7 @@ const StyledSection = styled.section`
     padding: 0 0 48px;
 
     @media (max-width: ${breakpoints[500]}) {
-        padding: 0 0 32px;
+        padding: 0 0 36px;
     }
 `;
 
