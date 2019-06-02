@@ -56,7 +56,7 @@ export default class MyDocument extends Document {
         return (
             <html>
                 <Head>
-                    <link rel="manifest" href="/static/manifest.json" />
+                    <link rel="manifest" href="/static/manifest/manifest.json" />
                     <meta name="theme-color" content="#cccccc" />
                     {/* Apple support */}
                     <link

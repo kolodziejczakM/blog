@@ -24,17 +24,6 @@ export default class MyApp extends App {
         document.querySelectorAll('pre code').forEach(block => {
             hljs.highlightBlock(block);
         });
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/static/sw.js').then(
-                () => {
-                    console.log('Registered');
-                },
-                err => {
-                    console.log(err);
-                }
-            );
-        }
     }
 
     render() {
